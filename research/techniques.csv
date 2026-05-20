@@ -1,0 +1,43 @@
+technique,category,target_benchmark,metric,lift_value,unit,is_relative,source,confidence,citation
+AggAgent,aggregation,deep-research,accuracy,10.3,pp,False,arXiv:2604.11753,high,R4-F34
+DeepVerifier,verification,GAIA (hard),accuracy,9.5,pp,False,arXiv:2601.15808,high,R4-F8 R6-F51
+Trajectory Compression,sampling,SWE-Bench Verified,accuracy,6.7,pp,False,arXiv:2604.16529,high,R6-F49
+Trajectory Compression,sampling,Terminal-Bench 2.0,accuracy,12.2,pp,False,arXiv:2604.16529,high,R6-F49
+Asymmetric Verification,verification,BrowseComp (GLM-4.5),accuracy,27.0,pp,False,arXiv:2510.06135,high,R6-F52
+Tree-GRPO,sampling,agent tasks,accuracy,69.0,pct,True,arXiv:2509.21240,high,R6-F9
+TrACE (adaptive compute),efficiency,GSM8K matched accuracy,calls reduction,33.0,pct,True,arXiv:2604.08369,high,R6-F39
+TrACE-8,efficiency,MiniHouse matched accuracy,calls reduction,65.0,pct,True,arXiv:2604.08369,high,R6-F39
+Ares (per-step effort),efficiency,TAU-Bench Retail,cost reduction,52.7,pct,True,arXiv:2603.07915,high,R6-F24
+Ares (per-step effort),efficiency,BrowseComp-Plus,tokens reduction,41.8,pct,True,arXiv:2603.07915,high,R6-F24
+Inverse Entropy SC,sampling,reasoning configurations,accuracy,46.7,pct,True,arXiv:2511.02309,high,R6-F15
+Multi-agent vs single Opus,orchestration,research tasks,accuracy,90.2,pct,True,Anthropic blueprint,high,R1-MA1 R5-F14
+PROClaim (Progressive RAG),debate,Check-COVID,accuracy,10.0,pp,False,arXiv:2603.28488,high,R4-F5
+Attention-MoA,ensemble,AlpacaEval LC,tokens reduction,11.0,pct,True,arXiv:2601.16596,high,R4-F22
+PASTE (speculative tools),efficiency,task completion time,reduction,48.5,pct,True,arXiv:2603.18897,high,R4-F10
+Self-Manager TCBs,async,DeepResearch Bench,outperforms baseline,1.0,binary,False,arXiv:2601.17879,high,R4-F9
+Multi-agent IR (incident response),orchestration,actionable-recommendation rate,improvement,98.3,pp,False,arXiv:2511.15755,high,R4-F4
+SWE-PRM,verification,SWE-Bench Verified,accuracy,10.6,pp,False,arXiv:2509.02360,high,R6-F3
+PRA (verifier as agent),verification,knowledge-intensive tasks,accuracy,25.7,pct,True,arXiv:2604.09482,high,R6-F7
+ACE (Agentic Context Eng),context,agent tasks,accuracy,10.6,pct,True,arXiv:2510.04618,high,R5-F10
+ACE (Agentic Context Eng),context,finance tasks,accuracy,8.6,pct,True,arXiv:2510.04618,high,R5-F10
+Reflexive (vs sequential),orchestration,SEC filings F1,accuracy,943,F1x1000,False,arXiv:2603.22651,high,R4-F1
+Code Execution with MCP,context,token usage,reduction,98.7,pct,True,Anthropic blog,high,R1-SDK3 R5-F23
+ToolSearch (Tool Search Tool),context,token usage,reduction,85.0,pct,True,Anthropic docs,high,R1-SDK2 R5-F20
+Tool Search Tool (accuracy),context,Opus 4.5 selection accuracy,accuracy,8.6,pp,False,Anthropic blog,high,R1-SDK2
+Programmatic Tool Calling,context,token usage,reduction,37.0,pct,True,Anthropic blog,high,R1-SDK2
+Clear tool_uses (335K->173K),context,researcher context,reduction,48.4,pct,True,Anthropic cookbook,high,R5-F8
+Prompt caching (sliding 4-breakpoint),caching,25-turn input cost,reduction,80.0,pct,True,Anthropic docs,high,R5-F17
+Prompt caching (broad agent),caching,DeepResearch Bench cost,reduction,60.0,pct,True,arXiv:2601.06007,high,R5-F16
+Three-tier model routing,routing,cost reduction,reduction,51.0,pct,True,industry,med,inferred
+Token-efficient tool use (Claude 4.x),efficiency,output tokens,reduction,14.0,pct,True,Anthropic docs,high,R5-F36
+Token-efficient tool use (max),efficiency,output tokens,reduction,70.0,pct,True,Anthropic docs,high,R5-F36
+Dynamic toolsets,context,input tokens (simple),reduction,96.7,pct,True,Speakeasy,high,R5-F37
+Compaction API (auto),context,long-running runs,reduction,50.0,pct,True,Anthropic,med,R5-F7
+BATS (Budget-Aware Tool-Use),efficiency,tool calls,reduction,40.0,pct,True,arXiv:2511.17006,high,R6-F25
+BATS,efficiency,cost,reduction,31.0,pct,True,arXiv:2511.17006,high,R6-F25
+Opus 4.5 token efficiency (medium),efficiency,output tokens vs Sonnet 4.5,reduction,76.0,pct,True,Anthropic Opus 4.5,high,R1-M1
+Opus 4.5 token efficiency (high),efficiency,output tokens vs Sonnet 4.5,reduction,48.0,pct,True,Anthropic Opus 4.5,high,R1-M1
+GPT-5.5 hallucination drop,reliability,hallucination rate,reduction,60.0,pct,True,OpenAI,high,R2-GPT5.5
+DALA (VCG-auction comms),orchestration,GSM8K tokens vs competitors,reduction,55.4,pct,True,arXiv:2511.13193,high,R4-F19
+Best-of-N voting,sampling,BrowseComp,accuracy,20.0,pp,False,OpenAI BrowseComp,high,R2-DR
+SAGE Skill Library,memory,SGC tokens,reduction,59.0,pct,True,arXiv:2602.08234,high,R4-F27

@@ -1,0 +1,21 @@
+benchmark,category,nov_2025_sota,nov_2025_model,may_2026_sota,may_2026_model,delta_pp,saturation_status,notes
+SWE-Bench Verified,coding,77.2,Claude Sonnet 4.5,93.9,Claude Mythos Preview,16.7,saturated,Anthropic vendor-reported; Scale SEAL standardized is lower
+SWE-Bench Multilingual,coding,52.0,Claude Sonnet 4.5 (est),87.3,Claude Mythos Preview,35.3,active,Vendor reported
+SWE-Bench Pro,coding,45.9,Claude Opus 4.5,77.8,Claude Mythos Preview,31.9,open,Vendor reported; Scale SEAL standardized top is only ~46%
+HLE,reasoning,41.0,Gemini 3 Deep Think,64.7,Claude Mythos Preview,23.7,active,No-tools baseline; ~35pp gap to ceiling remains
+GPQA Diamond,reasoning,91.0,Gemini 3 Deep Think (est),94.3,Gemini 3.1 Pro Preview,3.3,saturated,Top cluster 92-94%; PhD experts score 65%
+AIME 2025,reasoning,94.6,GPT-5,100.0,GPT-5,5.4,saturated,Perfect score achieved
+FrontierMath,reasoning,40.0,Gemini 3 Deep Think,52.4,GPT-5.5 Pro,12.4,near_saturation,Top-4 within 2.4pp
+GAIA (single-model),research,67.4,OpenAI Deep Research,52.3,Claude Mythos Preview,-15.1,plateau,BenchLM single-model; system-level scores 92.4%
+GAIA (system-level),research,67.0,OpenAI Deep Research,92.4,OPS-Agentic-Search,25.4,active,Steel.dev system-level board
+BrowseComp,research,51.5,OpenAI Deep Research,90.1,GPT-5.5 Pro,38.6,active,Largest delta in this list
+TAU-Bench,research,86.2,Claude Sonnet 4.5,89.2,Claude Mythos Preview,3.0,near_saturation,Retail subset; airline still ~70%
+OSWorld,computer_use,61.0,Claude Sonnet 4.5 (est),72.7,Claude Opus 4.6,11.7,active,Now at/above human baseline 72.4%
+WindowsAgentArena,computer_use,19.5,Navi (Microsoft baseline),50.6,UI-TARS-2,31.1,open,Human ~74.5%
+METR Time Horizons (50%),time_horizon,2.0,Frontier (Nov 2025),16.0,Claude Mythos Preview,14.0,open,Hours; 6x growth in 6 months
+ARC-AGI-2,arc,31.1,Gemini 3 Pro,85.0,GPT-5.5,53.9,saturated,Effectively solved
+ARC-AGI-3,arc,0.0,Not launched,0.51,Frontier models,0.51,embarrassingly_hard,Interactive; humans 100% - largest known gap
+MLE-Bench,ml_eng,22.4,Microsoft RD-agent,34.2,Neo agent,11.8,open,Far below human Kaggle gold
+Cybench,cyber,50.0,o1/Sonnet 3.5 mid-range (est),100.0,Claude Mythos Preview,50.0,saturated,Migrated to BountyBench/CyberGym
+Vending-Bench 2,long_horizon,500,Starting budget,5478,Gemini 3 Pro,4978,open,Net worth in dollars over simulated year
+Terminal-Bench 2.0,coding,54.2,Gemini 3 Pro,82.7,GPT-5.5,28.5,active,Agentic coding terminal
