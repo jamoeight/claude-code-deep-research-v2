@@ -31,6 +31,11 @@ def build(h=0.6, parts=PARTS, verbose=True, lo=None, hi=None):
         log(p)
     floor = Batch(); floor.rbox((0, 0, -400), (400, 400, 400))
     F.apply(floor, 'sub')
+    import os
+    if not os.environ.get('NOPOST') and len(parts) == len(PARTS):
+        import seams
+        seams.apply(F)
+        log('seams/post')
     return F
 
 

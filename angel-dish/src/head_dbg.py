@@ -10,7 +10,7 @@ s = 4
 im = Image.open(REF).convert('RGB').crop(box)
 im = im.resize((im.width * s, im.height * s), Image.BICUBIC)
 d = ImageDraw.Draw(im)
-cols = {'RF': (0, 255, 255), 'RS1': (255, 255, 0), 'RS2': (255, 128, 0), 'RS3': (255, 60, 0), 'RB': (128, 128, 255), 'CB': (90, 90, 90), 'LF': (0, 255, 0), 'LS': (255, 0, 255), 'LB': (255, 255, 255), 'RM': (0, 120, 255), 'RU': (160, 0, 255)}
+cols = {'RF': (0, 255, 255), 'RS': (255, 255, 0), 'RB': (128, 128, 255), 'CB': (90, 90, 90), 'LF': (0, 255, 0), 'LS': (255, 0, 255), 'LB': (255, 255, 255), 'RM': (0, 120, 255), 'RU': (160, 0, 255)}
 paths = head_hair.debug_paths()
 for name, gs in paths.items():
     for g in gs:

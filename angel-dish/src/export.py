@@ -41,6 +41,11 @@ def main():
         v, f = fast_simplification.simplify(v.astype(np.float32), f.astype(np.int64), target_reduction=1 - tf / len(f), agg=5)
         v, f, nc2, _ = largest_component(v, f)
         print(f'[{time.time() - t0:.0f}s] decimated: {len(v)} verts {len(f)} faces', flush=True)
+        import pymeshfix   # decimation can leave a few non-manifold edges; make it watertight again
+        mf = pymeshfix.MeshFix(np.asarray(v, np.float64), np.asarray(f, np.int32))
+        mf.repair(joincomp=False, remove_smallest_components=True)
+        v, f = mf.points.astype(np.float32), mf.faces.astype(np.int64)
+        print(f'[{time.time() - t0:.0f}s] repaired: {len(f)} faces', flush=True)
     v = (v * EXPORT_SCALE).astype(np.float32)
     v[:, 2] -= v[:, 2].min()           # sit exactly on the bed
     save_stl(out, v, f)

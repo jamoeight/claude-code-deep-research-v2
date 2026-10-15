@@ -18,7 +18,17 @@ class Body:
             # the figure's finished surface (gown relief included), so hair lies ON the visible surface
             try:
                 import figure
-                G = figure.component(self.F.blank())
+                # skirt drapery folds are traced inside the figure's own block; in this clipped proxy box (z >= 44) the
+                # lower-skirt fold specs land on wrong surfaces (a phantom slab behind the neck) -> leave them out here
+                old = os.environ.get('FIG_NODRAPE')
+                os.environ['FIG_NODRAPE'] = '1'
+                try:
+                    G = figure.component(self.F.blank())
+                finally:
+                    if old is None:
+                        os.environ.pop('FIG_NODRAPE', None)
+                    else:
+                        os.environ['FIG_NODRAPE'] = old
                 if G is not None and np.isfinite(G.G).all() and (G.G < 0).sum() > 1000:
                     self.F = G
                     self.ok = True

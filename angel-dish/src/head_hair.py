@@ -20,7 +20,7 @@ CAP_C = np.array([-0.3, -1.8, 1.6])          # outer hair surface (ribbon top) o
 CAP_R = np.array([6.7, 7.6, 8.2])
 
 
-TC, SINK, CAP_SHRINK, WOVER_CAP = 1.0, 0.4, 0.6, 1.15     # scalp ribbon half-thickness, how deep its centre sits in the cap volume
+TC, SINK, CAP_SHRINK, WOVER_CAP = 1.0, 0.4, 0.85, 1.15     # scalp ribbon half-thickness, how deep its centre sits in the cap volume
 
 
 import os
@@ -109,13 +109,18 @@ def P2W(trace, ys):
 # front column, run out over the shoulder (in front of the wing) and curl down at the outer end
 # flare over her right shoulder (traced on the photo, ref_flare5): an upper wave lobe that curls under, and two
 # heavy locks that pass over the top of the shoulder, turn down at px x~337 and hang along the back of the upper arm
-_RS1 = P2W([(388, 211), (374, 218), (362, 228), (354, 241), (354, 252), (361, 259)],
-           [23.8, 24.4, 25.1, 25.7, 26.0, 26.0])
-_RS2 = P2W([(406, 256), (389, 262), (371, 265), (353, 268), (342, 276)], [23.5, 24.5, 25.5, 26.2, 26.4]) + \
-    [(-35.3, 25.4, 72.4), (-35.4, 23.8, 69.6), (-35.2, 23.0, 67.0), (-34.9, 22.6, 64.6)]
-# lowest flare lock rests on the top of the shoulder (the figure's shoulder sits a little lower than the photo's)
-_RS3 = [(-24.5, 22.5, 75.5), (-27.5, 22.6, 74.0), (-30.0, 22.8, 72.6), (-32.4, 23.2, 71.2), (-34.0, 23.6, 69.8),
-        (-34.8, 23.4, 68.0), (-35.0, 23.0, 66.4), (-34.9, 22.6, 64.8)]
+# flare over her right shoulder: ONE cascade of ~7 packed S-wave locks (traced on ref_flare6): the top edge follows the
+# outer contour of the upper lobe, the bottom edge rests on the top of the shoulder; all of them pass over the shoulder
+# and end flattened on the back of the upper arm / shoulder (no free hooks)
+_FT = P2W([(393, 192), (375, 207), (363, 222), (357, 238), (354, 251), (343, 261), (337, 271)], [23.6, 24.2, 24.8, 25.4, 25.8, 26.1, 26.2]) + \
+    [ws(-35.2, 25.6, 71.8), ws(-35.0, 24.4, 69.2), ws(-34.6, 23.6, 67.0)]
+_FM = P2W([(403, 236), (388, 249), (372, 258), (357, 264), (346, 271)], [23.0, 23.9, 24.9, 25.5, 25.8]) + \
+    [ws(-34.4, 24.6, 70.2), ws(-34.0, 23.6, 67.8), ws(-33.6, 23.0, 66.0)]
+_FB = [(-24.2, 22.4, 76.0), ws(-27.2, 22.5, 74.4), ws(-29.8, 22.7, 73.0), ws(-31.8, 23.0, 71.6), ws(-33.0, 23.2, 69.8),
+       ws(-33.4, 23.0, 68.0), ws(-33.2, 22.6, 66.4)]
+_FT = [w(*p) if not isinstance(p[0], str) else p for p in _FT]
+_FM = [w(*p) if not isinstance(p[0], str) else p for p in _FM]
+_FB = [w(*p) if not isinstance(p[0], str) else p for p in _FB]
 _RU = [(-25.6, 23.8, 81.2), (-27.2, 26.4, 77.6), (-29.0, 28.8, 74.6), (-30.8, 30.6, 72.0), (-31.6, 31.6, 68.5),
        (-31.6, 32.0, 64.5)]
 _RUa, _RUb = band(_RU, 2.4)
@@ -123,18 +128,13 @@ _RUa = _RUa[:2] + [ws(*x[1:]) for x in _RUa[2:]]
 _RUb = _RUb[:2] + [ws(*x[1:]) for x in _RUb[2:]]
 _RM = [(-24.8, 21.0, 83.6), (-26.0, 22.6, 80.4), (-26.6, 23.8, 77.6), (-26.8, 25.0, 75.8)]
 _RMa, _RMb = band(_RM, 2.0)
-_RS1a, _RS1b = band(_RS1, 1.3)
-_RS2a, _RS2b = band(_RS2, 1.25)
-_RS3a, _RS3b = band(_RS3, 1.15)
-_RS3a = _RS3a[:1] + [ws(*x[1:]) for x in _RS3a[1:]]
-_RS3b = _RS3b[:1] + [ws(*x[1:]) for x in _RS3b[1:]]
 
 
 SHEETS = [
     # her right, front: covers the upper right forehead and temple (the lobe edge forms the hairline), then a column of
     # heavy fused locks beside the cheek and the neck, over the front of the right shoulder, ending flat by the V-neck
-    dict(name='RF', offk=1.0, tipfade=True, bulge=(0.35, 4.6, 5.0), n=[4], wave=(1.0, 10.5, 0.6), nstr=2, tf=1.3, amp=0.32, wover=1.4, seed=1,
-         guides=[([(-9, 31), (-19, 23), (-29, 15), (-39, 8), (-48, 1), (-57, -7), (-61, -16)],
+    dict(name='RF', var=(0.08, 0.18, 0.25), under_end=1.8, offk=1.0, tipfade=True, bulge=(0.22, 5.0, 7.5), n=[4], wave=(1.2, 9.6, 0.6), nstr=2, tf=1.3, amp=0.32, wover=1.4, seed=1,
+         guides=[([(-9, 37), (-19, 30), (-29, 23), (-39, 15), (-48, 7), (-57, -3), (-61, -14)],
                   [hl(-6.5, 1.6, -3.0), hl(-6.3, 1.2, -4.6), hl(-5.6, 0.5, -6.0), hl(-4.9, -0.3, -7.3), pp(421, 255, 20.2), pp(418, 273, 20.6), pf(420, 289, 20.6), pf(424, 305, 20.0),
                    pf(429, 320, 19.0), pf(434, 335, 18.0), pf(438, 348, 17.5), pf(440, 358, 17.0)]),
                  ([(-10, 40), (-34, 36), (-52, 27), (-64, 14), (-70, -2), (-73, -17), (-74, -30)],
@@ -148,15 +148,10 @@ SHEETS = [
          guides=[([(-10, 50), (-55, 44), (-92, 29), (-112, 9), (-121, -11), (-125, -26)], _RUa),
                  ([(-10, 58), (-66, 50), (-108, 32), (-130, 10), (-139, -10), (-143, -25)], _RUb)]),
     # her right: the flare over the shoulder (upper curling lobe + two heavy locks turning down behind the arm)
-    dict(name='RS1', tipw=0.75, tipsink=1.0, n=[2], wave=(0.35, 10.0, 2.2), nstr=3, tf=1.3, amp=0.3, wover=1.25, seed=2,
-         guides=[([(-10, 42), (-38, 38), (-62, 29), (-80, 15), (-90, -3), (-95, -19), (-98, -31)], _RS1a),
-                 ([(-10, 48), (-48, 42), (-80, 30), (-100, 13), (-110, -5), (-115, -19), (-118, -29)], _RS1b)]),
-    dict(name='RS2', tipw=0.75, tipsink=1.0, n=[2], wave=(0.6, 10.5, 2.6), nstr=3, tf=1.3, amp=0.3, wover=1.25, seed=3,
-         guides=[([(-10, 49), (-50, 43), (-83, 30), (-103, 13), (-113, -5), (-118, -19), (-121, -29)], _RS2a),
-                 ([(-10, 56), (-60, 48), (-98, 32), (-118, 12), (-127, -7), (-132, -20), (-135, -28)], _RS2b)]),
-    dict(name='RS3', tipw=0.75, tipsink=1.0, n=[2], wave=(0.6, 10.5, 3.0), nstr=3, tf=1.2, amp=0.3, wover=1.25, seed=10,
-         guides=[([(-10, 57), (-62, 49), (-101, 33), (-121, 12), (-130, -7), (-135, -20), (-138, -28)], _RS3a),
-                 ([(-10, 63), (-72, 55), (-114, 34), (-136, 10), (-145, -10), (-150, -21), (-153, -27)], _RS3b)]),
+    dict(name='RS', tipfade=True, tipw=0.75, n=[3, 3], groups=(2, 3), var=(0.08, 0.2, 0.3), under_t=0.95, under_end=2.0, wave=(0.5, 9.0, 2.4), nstr=3, tf=1.2, amp=0.3, wover=1.6, seed=2,
+         guides=[([(-10, 46), (-46, 41), (-78, 30), (-98, 13), (-108, -5), (-113, -19), (-116, -29)], _FT),
+                 ([(-10, 52), (-56, 46), (-92, 31), (-112, 12), (-121, -6), (-126, -19), (-129, -28)], _FM),
+                 ([(-10, 60), (-68, 53), (-108, 34), (-130, 11), (-139, -8), (-144, -20), (-147, -27)], _FB)]),
     # her right, back of the head -> down the back of the head, then a wavy curtain on the upper back
     dict(name='RB', tipfade=True, tipw=0.5, stagger=3.0, nmode='radial', wdelay=4.0, n=[3, 3], wave=(0.8, 10.5, 1.0), nstr=3, tf=1.1, amp=0.3, wover=1.25, seed=4, under_t=0.8,
          guides=[([(-10, 66), (-84, 57), (-126, 36), (-142, 12), (-146, -12)],
@@ -172,25 +167,25 @@ SHEETS = [
                  ([(150, 80), (168, 62), (172, 40), (173, 14), (174, -12)],
                   [w(-15.4, 29.0, 79.0), w(-15.6, 32.2, 73.0), w(-15.8, 34.6, 67.0), w(-15.8, 34.2, 62.0)])]),
     # her left, front: sweeps over the left temple, behind the cheek, column beside the neck onto the chest
-    dict(name='LF', offk=1.0, tipfade=True, bulge=(0.45, 4.2, 4.0), n=[3, 2], wave=(1.0, 10.5, 0.2), nstr=2, tf=1.3, amp=0.32, wover=1.4, seed=5,
-         guides=[([(-8, 30), (6, 24), (22, 18), (35, 11), (45, 1), (51, -12), (55, -26), (56, -32)],
-                  [pp(470, 252, 22.0), pp(472, 266, 22.2), pp(475, 281, 22.4), pp(478, 296, 22.4), pf(480, 311, 22.0),
+    dict(name='LF', var=(0.08, 0.18, 0.25), under_end=1.8, offk=1.0, tipfade=True, bulge=(0.14, 4.8, 7.0), n=[3, 2], wave=(1.15, 9.6, 0.2), nstr=2, tf=1.3, amp=0.32, wover=1.4, seed=5,
+         guides=[([(-12, 36), (6, 30), (22, 23), (35, 15), (45, 4), (51, -10), (55, -25), (56, -32)],
+                  [pp(467, 252, 21.8), pp(467, 266, 22.0), pp(469, 281, 22.2), pp(473, 296, 22.2), pf(477, 311, 22.0),
                    pf(482, 325, 21.5), pf(484, 338, 21.0), pf(486, 349, 20.5), pf(487, 356, 20.0)]),
-                 ([(-8, 44), (22, 40), (48, 31), (66, 17), (76, 0), (82, -17), (85, -31)],
+                 ([(-12, 44), (22, 40), (48, 31), (66, 17), (76, 0), (82, -17), (85, -31)],
                   [pp(483, 247, 22.6), pp(489, 264, 22.8), pp(493, 282, 23.0), pp(496, 300, 23.0), pp(498, 317, 22.6),
                    pp(497, 331, 22.0), pf(495, 344, 22.0), pf(493, 353, 21.5), pf(491, 360, 21.0)]),
-                 ([(-8, 54), (34, 50), (64, 40), (84, 23), (94, 4), (100, -14), (102, -28)],
+                 ([(-12, 54), (34, 50), (64, 40), (84, 23), (94, 4), (100, -14), (102, -28)],
                   [pp(494, 240, 23.6), pp(500, 255, 24.0), pp(503, 272, 24.0), pp(505, 290, 23.8), pp(505, 306, 23.5),
-                   pp(505, 322, 23.0), pf(503, 336, 22.5), pf(501, 346, 22.0)])]),
+                   pp(505, 322, 23.0), pp(503, 336, 21.5), pf(501, 346, 22.0)])]),
     # her left, side: behind the ear, down behind the left shoulder
     dict(name='LS', tipfade=True, tipw=0.6, stagger=3.0, nmode='radial', wdelay=4.0, n=[3], wave=(0.9, 10.5, 1.8), nstr=3, tf=1.15, amp=0.3, wover=1.25, seed=6, under_t=0.7,
-         guides=[([(-8, 58), (36, 54), (66, 44), (86, 26), (96, 6), (102, -14)],
+         guides=[([(-12, 58), (36, 54), (66, 44), (86, 26), (96, 6), (102, -14)],
                   [w(-11.6, 25.5, 79.0), w(-10.6, 27.6, 73.5), w(-10.4, 29.2, 67.5), w(-10.8, 30.2, 61.5)]),
-                 ([(-8, 70), (50, 60), (90, 42), (112, 18), (122, -4), (126, -16)],
+                 ([(-12, 70), (50, 60), (90, 42), (112, 18), (122, -4), (126, -16)],
                   [w(-13.0, 27.6, 79.0), w(-12.2, 29.6, 73.5), w(-12.0, 30.8, 67.2), w(-12.4, 31.4, 61.0)])]),
     # her left, back
     dict(name='LB', tipfade=True, tipw=0.5, stagger=3.0, nmode='radial', wdelay=4.0, n=[4], wave=(0.8, 10.5, 0.4), nstr=3, tf=1.1, amp=0.3, wover=1.25, seed=7, under_t=0.8,
-         guides=[([(-10, 72), (60, 64), (106, 44), (124, 18), (130, -12)],
+         guides=[([(-12, 72), (60, 64), (106, 44), (124, 18), (130, -12)],
                   [ws(-13.6, 28.6, 78.4), ws(-12.4, 30.4, 72.6), ws(-12.0, 31.4, 66.6), ws(-12.2, 31.8, 60.6)]),
                  ([(40, 80), (160, 70), (170, 42), (172, 14), (173, -12)],
                   [ws(-16.8, 30.0, 78.0), ws(-17.0, 31.6, 71.5), ws(-17.2, 32.3, 66.0), ws(-17.2, 32.6, 60.5)])]),
@@ -253,6 +248,21 @@ def resolve(body, item, off):
     return p
 
 
+def smooth_fall(body, fl, off, it=4):
+    """Remove depth zigzags of the ray-cast fall points (pixel casts land alternately on the plane and on the body
+    relief): Laplacian smoothing (end points fixed), then pushed back out of the body."""
+    fl = np.array(fl, float)
+    if len(fl) < 4:
+        return fl
+    for _ in range(it):
+        fl[1:-1] = 0.5 * fl[1:-1] + 0.25 * (fl[:-2] + fl[2:])
+        dd = body.d(fl)
+        m = dd < off
+        if m.any():
+            fl[m] = body.project(fl[m], off, maxmove=5.0)
+    return fl
+
+
 def guide_path(body, cs, cap_ang, fall, off, sink, Nc, Nf):
     ang = catmull(np.array(cap_ang, float), per=10)
     loc = np.array([cap_local(*a) for a in ang])
@@ -265,6 +275,7 @@ def guide_path(body, cs, cap_ang, fall, off, sink, Nc, Nf):
     keep.append(len(wp) - 1)
     cap_ctrl = wp[keep]
     fl = np.array([resolve(body, it, off) for it in fall])
+    fl = smooth_fall(body, fl, off)
     ctrl = np.vstack([cap_ctrl, fl])
     C = catmull(ctrl, per=14)
     s = arclen(C)
@@ -317,7 +328,18 @@ def build_sheet(H, body, cs, sh, gate, h):
         for j in range(nl):
             u = (j + 0.5) / nl + rng.uniform(-0.1, 0.1) / nl
             ribbons.append((G[gi], G[gi + 1], u, nl))
+    # locks are grouped into broader masses of 2-3 ribbons: each mass has its own wavelength / amplitude / phase /
+    # end position (hand-sculpted variation), the ribbons inside a mass stay nearly in phase (fused, combed)
+    gmin, gmax = sh.get('groups', (2, 3))
+    gid = []
+    g = 0
+    while len(gid) < len(ribbons):
+        gid += [g] * int(rng.integers(gmin, gmax + 1)); g += 1
+    vl, va, vp = sh.get('var', (0.15, 0.32, 0.5))
+    gpar = [(rng.uniform(1 - vl, 1 + 0.7 * vl), rng.uniform(1 - va, 1 + va), rng.uniform(-vp, vp), rng.uniform(0.0, sh.get('stagger', 1.4)))
+            for _ in range(g)]
     for ri, (Ga, Gb, u, nl) in enumerate(ribbons):
+        gl, ga_, gp, gst = gpar[gid[ri]]
         C = Ga + (Gb - Ga) * u
         N = len(C)
         wsc = np.clip((Nc + 6 - np.arange(N)) / 12.0, 0, 1)
@@ -329,11 +351,11 @@ def build_sheet(H, body, cs, sh, gate, h):
         dG = Gb - Ga
         dist = np.linalg.norm(dG - T * np.sum(dG * T, axis=1)[:, None], axis=1)
         # ---- coherent S-wave (same phase across the sheet, tiny per-ribbon offset)
-        dph = rng.uniform(-0.05, 0.05)
+        dph = gp + rng.uniform(-0.12, 0.12)
         Lr = s[-1]
         w0 = sh.get('wdelay', 0.0)
         ramp = np.clip((sf + 1.0 - w0) / 5.0, 0, 1) * np.clip((Lr - s - 0.5) / 4.5, 0, 1) ** 0.7
-        disp = A0 * ramp * np.sin(2 * math.pi * np.maximum(sf - w0, 0) / Lam + Ph + dph)
+        disp = A0 * ga_ * ramp * np.sin(2 * math.pi * np.maximum(sf - w0, 0) / (Lam * gl) + Ph + dph)
         if sh.get('wcap'):
             sc0 = s_ex - 9.0
             rc = np.clip((s - sc0) / 3.0, 0, 1) * (sf < 0)
@@ -345,9 +367,9 @@ def build_sheet(H, body, cs, sh, gate, h):
             br = np.clip((s - bs) / 2.0, 0, 1) * np.clip((4.0 - sf) / 4.0, 0, 1)
             C = C + Uv * (ba * br * np.sin(2 * math.pi * (s - bs) / bl + Ph))[:, None]
         # roots emerge from the parting: sink the first ~2.4 mm into the scalp (soft V valley along the part line)
-        C = C - Uv * (sh.get('rootsink', 0.6) * np.clip(1 - s / 2.4, 0, 1) ** 1.5)[:, None]
+        C = C - Uv * (sh.get('rootsink', 0.2) * np.clip(1 - s / 2.5, 0, 1) ** 1.3)[:, None]
         # ---- end stagger, profiles
-        cut = Lr - rng.uniform(0.0, sh.get('stagger', 1.4))
+        cut = Lr - gst - rng.uniform(0.0, 0.4)
         m = s <= cut
         C, Uv, S, s, sf, dist = C[m], Uv[m], S[m], s[m], sf[m], dist[m]
         Lr = s[-1]
@@ -363,6 +385,7 @@ def build_sheet(H, body, cs, sh, gate, h):
         fall = np.clip((sf + 2.0) / 4.0, 0, 1)
         tv = rng.uniform(0.85, 1.15)
         TWR = 1.1 + (sh.get('twr', 0.9) - 1.1) * fall     # thickness/width cap: ridge-like combed strands on the scalp
+        gfade = 1.0
         if sh.get('tipfade'):
             # lock ends flatten onto the body: width to ~45%, thickness to ~15%, centre sinks into the surface
             lf = 5.0
@@ -370,12 +393,13 @@ def build_sheet(H, body, cs, sh, gate, h):
             W = wb * root * (0.45 + 0.55 * tf_ ** 0.8)
             onb = np.clip((2.5 - body.d(C)) / 1.5, 0, 1)            # 1 where the lock lies on the body
             floor = 0.15 * onb + 0.55 * (1 - onb)
-            Tt = (tc + (tf - tc) * fall) * tv * np.clip(0.3 + 0.7 * s / 2.0, 0, 1) * (floor + (1 - floor) * tf_ ** 0.9)
+            Tt = (tc + (tf - tc) * fall) * tv * np.clip(0.58 + 0.42 * s / 1.3, 0, 1) * (floor + (1 - floor) * tf_ ** 0.9)
             Tt = np.minimum(Tt, np.maximum(W * TWR, 0.5))
             C = C - Uv * (0.85 * off * onb * (1 - tf_) ** 1.3)[:, None]
+            gfade = np.clip(tf_ * 1.6, 0, 1) ** 1.2          # no strand grooves on the thin flattened ends (no torn teeth)
         else:
             W = wb * root * (tw + (1 - tw) * tipf ** 0.7)
-            Tt = (tc + (tf - tc) * fall) * tv * np.clip(0.3 + 0.7 * s / 2.0, 0, 1) * (max(0.35, tw) + (1 - max(0.35, tw)) * tipf)
+            Tt = (tc + (tf - tc) * fall) * tv * np.clip(0.58 + 0.42 * s / 1.3, 0, 1) * (max(0.35, tw) + (1 - max(0.35, tw)) * tipf)
             Tt = np.minimum(Tt, W * TWR)
             # printable free-hanging ends: >= ~0.9 mm thick unless lying on the body
             onb = np.clip((2.5 - body.d(C)) / 1.5, 0, 1)
@@ -385,7 +409,7 @@ def build_sheet(H, body, cs, sh, gate, h):
             C = C - Uv * (sh.get('tipsink', 0.25) * tf * np.clip(1 - (Lr - s) / 2.5, 0, 1) ** 1.5)[:, None]
         ga = np.where(sf < 0, sh.get('amp_cap', GAMP_CAP), gamp)
         ga = ga + (gamp - ga) * np.clip((sf + 1.5) / 3.0, 0, 1)
-        amp = ga * gate * np.clip(0.3 + 0.7 * s / 0.6, 0, 1) * np.clip((Lr - s) / 3.0, 0, 1)
+        amp = ga * gate * np.clip(0.3 + 0.7 * s / 0.6, 0, 1) * np.clip((Lr - s) / 3.0, 0, 1) * gfade
         if DBG:
             mc = sf < 0
             print('%s r%d  cap W med %.2f min %.2f max %.2f | fall W med %.2f T med %.2f | L %.1f sf_end %.1f' % (
@@ -399,7 +423,7 @@ def build_sheet(H, body, cs, sh, gate, h):
     T, Uv, S = frames(M, s - s_ex, body, cs, sh.get('nmode', 'cam'))
     dG = G[-1] - G[0]
     lat = np.linalg.norm(dG - T * np.sum(dG * T, axis=1)[:, None], axis=1)
-    m = (s > s_ex + 1.0) & (s < s[-1] - 4.0)
+    m = (s > s_ex + 1.0) & (s < s[-1] - sh.get('under_end', 4.0))
     if m.sum() > 3:
         Wm = np.clip(0.5 * lat * 0.85, 0.5, 3.5)
         add_ribbon(H, (M - Uv * 0.3)[m], Uv[m], Wm[m], np.full(m.sum(), sh.get('under_t', 0.45)), 0.0, nstr=1, pexp=2.0, k=0.3)
@@ -423,10 +447,10 @@ def cap_volume(Hc):
     r = CAP_R - CAP_SHRINK
     B.ellipsoid(P(CAP_C), tuple(r), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=0)
     B.ellipsoid(P((-3.6, -2.4, 0.4)), (3.9, 5.0, 5.4), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.0)    # her right, swept volume
-    B.ellipsoid(P((2.6, -3.2, -1.2)), (2.9, 4.2, 4.4), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.0)    # her left
+    B.ellipsoid(P((2.4, -3.2, -1.2)), (2.6, 4.2, 4.4), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.0)    # her left
     B.ellipsoid(P((0.0, -4.6, -4.2)), (4.4, 2.8, 3.4), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.0)    # nape
-    B.ellipsoid(P((-3.7, 1.2, 4.3)), (3.0, 4.2, 2.8), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.4)      # her right front lobe
-    B.ellipsoid(P((3.4, 1.0, 4.0)), (2.4, 4.0, 2.6), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.0)       # her left front lobe
+    B.ellipsoid(P((-4.6, 0.3, 4.4)), (3.1, 4.0, 2.6), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=3.0)      # her right front lobe (rounded roll beside the part)
+    B.ellipsoid(P((3.7, 0.0, 4.1)), (2.2, 3.6, 2.2), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=2.0)       # her left front lobe
     Hc.apply(B)
 
 
@@ -446,11 +470,26 @@ LAST_BODY = None
 
 def build_hair(S):
     global LAST_BODY
+    import os
     body = Body()
     LAST_BODY = body
     gate = detail_gate(S.h)
     Hc = S.blank()
     cap_volume(Hc)
+    if os.environ.get('HEAD_VALLEY') == '1':
+        # (off: any valley in the cap volume exposes a smooth strip of cap between the thin ribbon roots; the part is
+        # the seam where the combed strands of both sides diverge)
+        # parting: only a gentle depression (~0.22 deep, ~2 mm wide, wide-radius cut so it has no flat floor) under the
+        # ribbon roots; the part itself is the seam where the combed strands of both sides diverge
+        th = np.linspace(32, 88, 29)
+        pl = np.array([cap_local(-10.0, t) for t in th])
+        nrm = (pl - CAP_C) / CAP_R ** 2; nrm /= np.linalg.norm(nrm, axis=1)[:, None]
+        fade = np.interp(th, [32, 42, 76, 88], [0.0, 1.0, 1.0, 0.2])
+        RV, dv = 2.5, 0.22 * fade
+        pv = pl - nrm * (CAP_SHRINK - (RV - dv))[:, None]
+        Bv = Batch()
+        Bv.tube(np.array([P(p) for p in pv]), np.full(len(th), RV), k=0.8)
+        Hc.apply(Bv, 'sub')
     # projection surface = hair cap volume U skull/face, so locks over the forehead lie ON the skin (hairline stands proud)
     Hs = S.blank(); Hs.G = np.minimum(Hc.G, S.G)
     cs = Sampler(Hs)
@@ -463,35 +502,34 @@ def build_hair(S):
         build_sheet(H, body, cs, sh, gate, S.h)
     # hidden hair mass behind the front columns, closing see-through slits between the hair and the neck
     Bf = Batch()
-    Bf.rcone((-21.2, 21.0, 82.0), (-21.8, 20.6, 77.0), 1.6, 1.8, k=0.8)
-    Bf.rcone((-20.8, 24.2, 82.5), (-22.0, 25.2, 75.0), 1.5, 1.7, k=0.8)
-    Bf.rcone((-14.8, 25.0, 82.5), (-14.4, 26.0, 75.0), 1.1, 1.2, k=0.8)
-    Bf.rcone((-14.4, 22.8, 81.5), (-14.2, 23.2, 76.5), 1.0, 1.1, k=0.8)          # behind LF, under the jaw (no see-through slit)
-    Bf.rcone((-12.7, 23.6, 82.0), (-12.9, 23.9, 78.0), 1.2, 1.1, k=0.8)          # behind LF at the back of the jaw (q3 see-through pocket)
-    Bf.sphere((-20.3, 17.2, 68.3), 0.55, k=0.3)          # closes a tiny pocket between an RF lock end and the gown (forms in the head/figure blend)
     Bf.rcone((-18.0, 25.0, 82.5), (-19.0, 27.6, 72.0), 2.2, 2.0, k=1.0)          # nape mass under the back curtain
+    Bf.rcone((-14.6, 25.4, 82.0), (-13.6, 26.8, 73.0), 1.9, 1.7, k=1.0)          # her left nape mass (no channel behind the neck)
     # pad under the flare over her right shoulder (no see-through holes between the locks; one heavy mass)
     # (set back behind the locks and hard-unioned, so the valleys between the locks stay dark grooves)
-    Bf.tube(np.array([(-24.5, 25.4, 79.3), (-27.5, 26.5, 77.6), (-30.5, 27.3, 76.0), (-33.0, 27.5, 74.4), (-34.2, 26.6, 72.4),
-                      (-34.5, 25.2, 70.2)]), [1.5, 1.5, 1.4, 1.2, 1.0, 0.85], k=0.4)
-    Bf.tube(np.array([(-24.5, 24.6, 76.8), (-27.5, 25.1, 75.2), (-30.5, 25.4, 73.6), (-33.0, 25.4, 72.0), (-34.2, 25.0, 70.3),
-                      (-34.7, 24.3, 68.4)]), [1.3, 1.35, 1.3, 1.1, 0.95, 0.8], k=0.4)
-    Bf.ellipsoid((-29.8, 27.2, 79.6), (2.0, 1.3, 1.8), k=0.5)
+    Bf.tube(np.array([(-24.5, 24.6, 78.6), (-27.5, 25.4, 77.0), (-30.5, 25.9, 75.4), (-32.8, 25.8, 73.8), (-33.8, 25.0, 71.8),
+                      (-34.0, 24.0, 69.8)]), [1.2, 1.2, 1.1, 0.95, 0.8, 0.7], k=0.4)
     H.apply(Bf, 'union')
     H.combine(Hc, 'union', 0.3)
     del Hc
-    # parting furrow: from the front hairline over the top to the crown
-    th = np.linspace(40, 84, 20)
+    # parting: a fine V crease where the hair of both sides rolls down into it (the ribbon roots sink toward the part);
+    # only a thin tube is cut, so no flat lit floor (which read as a raised rib), fading at both ends
+    th = np.linspace(37, 86, 26)
     pl = np.array([cap_local(-9.0, t) for t in th])
-    pl = pl - (pl - CAP_C) * (0.1 / np.linalg.norm(pl - CAP_C, axis=1))[:, None]     # hair top ~ CAP - 0.4: soft valley
+    nrm = (pl - CAP_C) / CAP_R; nrm /= np.linalg.norm(nrm, axis=1)[:, None]
+    RP = 0.32
+    dep = np.interp(th, [37, 44, 74, 86], [0.05, 0.14, 0.12, 0.0]) + 0.5
+    pl = pl + nrm * (RP - dep - 0.6)[:, None]          # crease bottom ~0.3 below the cap-volume top (CAP - 0.6)
     Pt = Batch()
-    Pt.tube(np.array([P(p) for p in pl]), np.interp(th, [40, 50, 70, 84], [0.3, 0.52, 0.48, 0.3]), k=0.3)
-    if os.environ.get('HEAD_NOFURROW') != '1':
+    Pt.tube(np.array([P(p) for p in pl]), np.interp(th, [37, 44, 74, 86], [0.15, 0.22, 0.22, 0.12]), k=0.2)
+    if os.environ.get('HEAD_SLOT') == '1':
         H.apply(Pt, 'sub')
-    # face window (keep the face clear)
+    # face window: the hair thins to nothing over ~1.4 mm toward the face (feathered hairline, no overhanging lip)
     Wn = Batch()
-    Wn.ellipsoid(P((0.35, 7.6, -2.2)), (3.65, 7.0, 6.1), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=0.6)
-    H.apply(Wn, 'sub')
+    Wn.ellipsoid(P((0.3, 7.6, -2.3)), (3.75, 7.0, 6.3), xaxis=D((1, 0, 0)), yaxis=D((0, 1, 0)), k=0.0)
+    Wf = S.blank(); Wf.apply(Wn)
+    tw = np.clip((0.9 - Wf.G) / 1.5, 0.0, 1.0)
+    H.G += (2.2 * tw * tw * (3 - 2 * tw)).astype(np.float32)
+    del Wf
     _drop_islands(H)
     S.combine(H, 'union', 0.35)
     return S

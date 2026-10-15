@@ -18,21 +18,16 @@ def F(pix, A, wu, wd=None, steep="below", ta=0.3, tb=0.3, cr=0.0, step=0.0, sban
 # round 2: fewer, broader, smoother folds (clinging satin); cosine sections with a gentle upper flank and a
 # steeper lower flank, light shadow creases, every end tapered; nothing stacked on top of another fold.
 BODICE = [
-    # top lapel (her left side of the V): a soft rolled fabric edge from her left shoulder to the V bottom, fading out
-    # just past it (no long knife line across the stomach)
-    F([(484, 296), (480, 318), (474, 340), (467, 358), (459, 372), (450, 384)],
-      0.55, 1.3, 0.7, 'above', ta=0.06, tb=0.35, cr=0.0, step=0.4, sband=2.4),
+    # (round 3c1) neckline: rolled fabric edges standing proud of the skin inside the V (the wrap folds below are
+    # solid -- figure_drape.BOD).  Top lapel (her left side of the V) from her left shoulder to just past the V bottom
+    F([(488, 296), (485, 316), (480, 334), (474, 350), (468, 363), (461, 375)],
+      0.6, 1.1, 0.55, 'above', ta=0.06, tb=0.3, cr=0.0, step=0.5, sband=2.0),
     # under lapel edge (her right side of the V)
-    F([(416, 298), (426, 316), (438, 332), (450, 346), (463, 360)], 0.4, 1.2, 0.7, 'above', ta=0.12, tb=0.1, cr=0.0),
+    F([(414, 304), (422, 318), (433, 331), (446, 344), (458, 355), (467, 364)], 0.5, 1.0, 0.55, 'above', ta=0.1, tb=0.1, cr=0.0,
+      step=0.45, sband=1.8),
     # armhole edge on her right shoulder (a rolled edge, arm side a little lower)
-    F([(393, 292), (386, 314), (381, 338), (380, 362), (383, 382), (389, 398)], 0.5, 1.2, 0.8, 'left', ta=0.1, tb=0.35,
-      cr=0.0, step=0.38, sband=2.0),
-    # curved wrap folds from her left side (below the bust) toward her right hip: rounded crests with soft valleys,
-    # starting below the under-bust line (no ledge under the breasts)
-    F([(505, 412), (484, 420), (460, 432), (436, 448), (414, 466), (398, 482)], 1.75, 2.3, 1.5, ta=0.35, tb=0.45, cr=0.0),
-    F([(499, 446), (478, 455), (455, 469), (432, 487), (412, 506)], 1.6, 2.4, 1.6, ta=0.35, tb=0.45, cr=0.0),
-    F([(500, 428), (480, 436), (457, 449), (433, 466), (410, 486)], -1.0, 1.5, 1.3, ta=0.35, tb=0.4),
-    F([(470, 476), (452, 490), (432, 508), (416, 526)], 1.1, 2.0, 1.4, ta=0.4, tb=0.45, cr=0.0),
+    F([(395, 290), (388, 312), (383, 336), (381, 360), (383, 380), (388, 396)], 0.7, 1.1, 0.6, 'left', ta=0.1, tb=0.35,
+      cr=0.0, step=0.55, sband=1.8),
 ]
 
 LAP = [
@@ -106,11 +101,13 @@ def _soften(lst, wr=0.62, tmin=0.35):
     return out
 
 
-PX_FOLDS = BODICE    # round 3: lap / hip / swag / knee / hem folds are solid: hip / swag / knee / hem folds are solid (figure_drape)
+PX_FOLDS = []    # round 3c2: the bodice edges are solid 3D bands (figure_drape.BOD3); round 3: lap / hip / swag / knee / hem folds are solid: hip / swag / knee / hem folds are solid (figure_drape)
 
 # skin inside the V neckline (lowered ~0.7 under the fabric edge; fades out toward the sternal notch)
-VNECK = [(463, 362), (450, 346), (438, 332), (426, 316), (418, 300), (414, 288), (487, 288), (483, 300), (478, 320), (472, 342)]
+VNECK = [(467, 364), (458, 355), (446, 344), (433, 331), (422, 318), (414, 304), (410, 284), (490, 284), (488, 296), (485, 316),
+         (480, 334), (474, 350)]
 VFADE = (298.0, 314.0)
+VSTEP = 0.0      # round 3c2: no camera-space skin step (the 3D lapel bands make the V edges)
 
 
 def steep_side(pix, steep):
@@ -150,10 +147,10 @@ def ref_texture(G0, lo, h, ts):
             w = float(np.max(sp['w']))
             T.fold(P, 0.0, w, 0.8 * w, 'L', (sp['ta'], sp['tb']), 0.0, 0.55, True, 1.0, 0.0, 3.0, 'cos')
     # V neckline skin step
-    m = T.region_step(VNECK, 0.35, soft_px=2.0)
+    m = T.region_step(VNECK, VSTEP, soft_px=1.6) if VSTEP > 0 else 0.0 * T.D
     vv = T.v0 + np.arange(T.nv) / T.ts
     fade = TXM.sstep(vv, *VFADE)[:, None]
-    T.D += 0.35 * m * (1 - fade)            # undo the step above the fade line (smooth into the neck)
+    T.D += VSTEP * m * (1 - fade)            # undo the step above the fade line (smooth into the neck)
     T.smask *= 1 - 0.0 * m
     return T
 
@@ -231,7 +228,7 @@ def back_texture(G0, lo, h, ts):
 
 
 STRI_PITCH, STRI_AMP = 1.25, 0.04
-STRI_GUIDES = False     # combing along the solid folds read as crumpled wrinkles at h 0.22 -> off (smooth satin)
+STRI_GUIDES = False     # combing along the solid folds reads as crumpled chevrons at h 0.2 (re-checked r3c1) -> off
 RBLUR = 0.5
 
 

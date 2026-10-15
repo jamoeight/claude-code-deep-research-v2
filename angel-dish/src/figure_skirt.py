@@ -14,15 +14,17 @@ ZF = 7.3          # hem height: just under the dish floor (~7.6-8) so the pool m
 # width to the hem), q (profile exponent: larger = steeper top / longer flat pool)
 SUP = [
     # front: under the front of her right thigh, hip -> knee
-    (-32.0, 13.0, 31.0, 16.0, 1.05),
-    (-25.0, 11.0, 30.5, 8.5, 2.1),
-    (-17.0, 8.0, 30.0, 7.5, 2.2),
-    (-9.0, 4.5, 30.0, 7.0, 2.2),
-    (-3.0, 1.8, 31.5, 7.5, 2.1),
+    # (round 3c1: support line moved forward to the thigh front and a softer profile, so the gown falls from the
+    #  lap as one continuous convex drape -- no recess under the thigh)
+    (-32.0, 12.0, 31.0, 16.0, 1.05),
+    (-25.0, 9.0, 30.0, 10.0, 1.45),
+    (-17.0, 6.0, 29.5, 10.0, 1.4),
+    (-9.0, 2.8, 30.0, 9.5, 1.45),
+    (-3.0, 0.6, 31.5, 9.0, 1.55),
     # knee and the fabric falling down-right off the knees (legs tucked to the right, behind): a broad tent
-    (2.0, 1.5, 34.5, 11.0, 1.7),
-    (6.0, 5.5, 31.0, 13.0, 1.6),
-    (8.0, 12.0, 27.0, 13.0, 1.7),
+    (2.0, 0.8, 34.0, 11.0, 1.6),
+    (5.0, 5.0, 31.0, 9.5, 1.6),
+    (7.0, 12.0, 27.0, 11.5, 1.7),
     (7.5, 20.0, 23.0, 12.0, 1.8),
     (5.0, 28.0, 22.0, 10.0, 1.8),
     # back of the seat

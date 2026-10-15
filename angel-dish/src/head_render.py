@@ -96,6 +96,14 @@ def main():
             x0, y0, x1, y1 = box
             sc.render.border_min_x = x0 / W; sc.render.border_max_x = x1 / W
             sc.render.border_min_y = 1 - y1 / H; sc.render.border_max_y = 1 - y0 / H
+        elif v.startswith('z'):
+            # zoomed world orbit on her right shoulder / flare: zB, zBR, zL, zS, zF
+            az = {'zB': 180, 'zBR': 140, 'zL': -45, 'zS': -90, 'zF': 0, 'zBL': -140}[v]
+            azr, elr = math.radians(az), math.radians(15)
+            tgt = np.array([-25.0, 24.0, 76.0]); dist = 60
+            loc = tgt + dist * np.array([math.sin(azr) * math.cos(elr), -math.cos(azr) * math.cos(elr), math.sin(elr)])
+            add_cam(sc, tuple(loc), tuple(tgt), 80)
+            sc.render.resolution_x = res; sc.render.resolution_y = res
         elif v.startswith('w'):
             # world orbit around the upper body: wL (az -45), wR (az +45), wS (az -90), wB (az 180), wBL (-140), wBR (140)
             az = {'wL': -45, 'wR': 45, 'wS': -90, 'wSR': 90, 'wB': 180, 'wBL': -140, 'wBR': 140, 'wF': 0}[v]
