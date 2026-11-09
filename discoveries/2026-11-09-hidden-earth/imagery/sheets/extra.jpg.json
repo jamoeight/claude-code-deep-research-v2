@@ -1,0 +1,38 @@
+[
+ {
+  "id": "HOLAOLOKIA_box",
+  "s2_meta": {
+   "scene": "S2A_44SMG_20231205_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/HOLAOLOKIA_box_s2.jpg"
+ },
+ {
+  "id": "TUKHARA_refined",
+  "s2_meta": {
+   "scene": "S2B_44SQG_20231104_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/TUKHARA_refined_s2.jpg"
+ },
+ {
+  "id": "GEOGLYPH_Tequinho_calib",
+  "s2_meta": {
+   "scene": "S2B_19LFK_20230725_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/GEOGLYPH_Tequinho_calib_s2.jpg"
+ },
+ {
+  "id": "GEOGLYPH_JacoSa_calib",
+  "s2_meta": {
+   "scene": "S2B_19LFJ_20230725_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/GEOGLYPH_JacoSa_calib_s2.jpg"
+ }
+]

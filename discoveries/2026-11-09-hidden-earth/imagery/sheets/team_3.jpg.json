@@ -1,0 +1,112 @@
+[
+ {
+  "id": "T8-C4",
+  "s2_meta": {
+   "scene": "S2B_29PNP_20230311_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T8-C4_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T8-C4_dem.jpg"
+ },
+ {
+  "id": "T8-C6",
+  "s2_meta": {
+   "scene": "S2B_17RMP_20241014_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T8-C6_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T8-C6_dem.jpg"
+ },
+ {
+  "id": "T8-C7",
+  "s2_meta": {
+   "scene": "S2B_18SUE_20241021_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T8-C7_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T8-C7_dem.jpg"
+ },
+ {
+  "id": "T9-C2",
+  "s2_meta": {
+   "scene": "S2A_42WVC_20230604_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C2_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C2_dem.jpg"
+ },
+ {
+  "id": "T9-C3",
+  "s2_meta": {
+   "scene": "S2B_45RUM_20230105_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C3_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C3_dem.jpg"
+ },
+ {
+  "id": "T9-C4",
+  "s2_meta": {
+   "scene": "S2B_45RUM_20230105_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C4_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C4_dem.jpg"
+ },
+ {
+  "id": "T9-C5",
+  "s2_meta": {
+   "scene": "S2B_7VEG_20250903_0_L2A",
+   "local_cloud": 0.035,
+   "nodata": 0.079
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C5_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C5_dem.jpg"
+ },
+ {
+  "id": "T9-C8",
+  "s2_meta": {
+   "scene": "S2A_43SCA_20231121_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C8_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C8_dem.jpg"
+ },
+ {
+  "id": "T9-C9",
+  "s2_meta": {
+   "scene": "S2B_42WWD_20250817_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.182
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C9_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C9_dem.jpg"
+ },
+ {
+  "id": "T9-C11",
+  "s2_meta": {
+   "scene": "S2B_8VPK_20250904_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C11_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C11_dem.jpg"
+ },
+ {
+  "id": "T9-C12",
+  "s2_meta": {
+   "scene": "S2A_8VLL_20230618_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C12_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/T9-C12_dem.jpg"
+ }
+]

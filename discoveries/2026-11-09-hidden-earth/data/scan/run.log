@@ -1,0 +1,14 @@
+W_Sahara: 168 tiles in 444s
+C_Sahara: 476 tiles in 867s
+E_Sahara: 180 tiles in 250s
+/usr/local/lib/python3.13/site-packages/rasterio/warp.py:390: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  dest = _reproject(
+Arabia: 340 tiles in 398s
+Australia: 350 tiles in 457s
+Atacama: 50 tiles in 62s
+Namib_Kalahari: 154 tiles in 170s
+Iran_Afghan: 216 tiles in 263s
+C_Asia: 275 tiles in 340s
+Gobi_Tarim: 370 tiles in 452s
+Patagonia: 96 tiles in 110s
+US_SW_Mex: 255 tiles in 271s

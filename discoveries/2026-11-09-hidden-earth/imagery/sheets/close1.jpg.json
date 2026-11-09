@@ -1,0 +1,42 @@
+[
+ {
+  "id": "DARAI_doline",
+  "s2_meta": {
+   "scene": "S2C_54MYT_20250329_0_L2A",
+   "local_cloud": 0.085,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/DARAI_doline_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/DARAI_doline_dem.jpg"
+ },
+ {
+  "id": "STAR_fall",
+  "s2_meta": {
+   "scene": "S2C_54MWV_20251227_0_L2A",
+   "local_cloud": 0.007,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/STAR_fall_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/STAR_fall_dem.jpg"
+ },
+ {
+  "id": "MABU_E_massif",
+  "s2_meta": {
+   "scene": "S2A_37KBB_20230614_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.207
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/MABU_E_massif_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/MABU_E_massif_dem.jpg"
+ },
+ {
+  "id": "MABU_ref",
+  "s2_meta": {
+   "scene": "S2A_37KBB_20230614_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.3
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/MABU_ref_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/MABU_ref_dem.jpg"
+ }
+]

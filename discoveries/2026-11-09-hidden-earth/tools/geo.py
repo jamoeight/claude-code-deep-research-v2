@@ -173,13 +173,14 @@ def s2_chip(lat, lon, half_km, months, enhance=True):
     if not found:
         return None, None
     p, cloud, nodata = found
-    rgb = _window_read(f"{S2_BASE}/{p}TCI.tif", lat, lon, half_km)  # 3 x H x W uint8
-    img = np.transpose(rgb, (1, 2, 0))
-    if enhance:  # joint stretch keeps the colour balance natural
-        valid = img.sum(axis=2) > 0
-        if valid.sum() > 10:
-            a, b = np.percentile(img[valid], [0.5, 99.7])
-            img = np.clip((img.astype(float) - a) / max(1, b - a) * 255, 0, 255).astype(np.uint8)
+    # raw reflectance bands (TCI saturates over bright deserts / snow)
+    chans = [_window_read(f"{S2_BASE}/{p}{b}.tif", lat, lon, half_km)[0].astype(float) for b in ("B04", "B03", "B02")]
+    img = np.dstack(chans)
+    valid = img.sum(axis=2) > 0
+    if valid.sum() > 10:
+        a, b = np.percentile(img[valid], [0.5, 99.8])
+        img = np.clip((img - a) / max(1, b - a), 0, 1) ** 0.85 * 255
+    img = img.astype(np.uint8)
     sid = p.rstrip("/").split("/")[-1]
     return img, {"scene": sid, "local_cloud": round(float(cloud), 3), "nodata": round(float(nodata), 3)}
 

@@ -3,5 +3,9 @@
 *.tiff
 __pycache__/
 data/T*/
-data/scan/tiles/*.err
-data/waterfalls/tiles/*.err
+data/scan/tiles/
+data/waterfalls/tiles/
+data/waterfalls/knick.json
+data/waterfalls/candidates.json
+imagery/chips/
+*.err
