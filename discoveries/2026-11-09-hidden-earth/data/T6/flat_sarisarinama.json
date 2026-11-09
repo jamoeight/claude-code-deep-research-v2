@@ -1,0 +1,279 @@
+{
+ "tiles": [
+  "N04_00_W065_00"
+ ],
+ "n": 15,
+ "patches": [
+  {
+   "lat": 4.78614,
+   "lon": -64.43528,
+   "area_ha": 0.9,
+   "eq_diam_m": 110,
+   "compact": 0.71,
+   "z_patch": 1244.9,
+   "flat_std": 19.5,
+   "ring_med_above": 51.2,
+   "ring_min_above": -54.8,
+   "frac_ring_higher": 0.87,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.81889,
+   "lon": -64.28269,
+   "area_ha": 0.9,
+   "eq_diam_m": 110,
+   "compact": 0.59,
+   "z_patch": 418.5,
+   "flat_std": 4.3,
+   "ring_med_above": 34.0,
+   "ring_min_above": -11.7,
+   "frac_ring_higher": 0.96,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.82436,
+   "lon": -64.27115,
+   "area_ha": 1.2,
+   "eq_diam_m": 125,
+   "compact": 0.45,
+   "z_patch": 388.6,
+   "flat_std": 4.6,
+   "ring_med_above": 33.4,
+   "ring_min_above": -12.2,
+   "frac_ring_higher": 0.91,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.39308,
+   "lon": -64.07984,
+   "area_ha": 1.1,
+   "eq_diam_m": 120,
+   "compact": 0.56,
+   "z_patch": 375.0,
+   "flat_std": 6.5,
+   "ring_med_above": 30.6,
+   "ring_min_above": -16.2,
+   "frac_ring_higher": 0.85,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.7765,
+   "lon": -64.33192,
+   "area_ha": 0.9,
+   "eq_diam_m": 110,
+   "compact": 0.51,
+   "z_patch": 538.0,
+   "flat_std": 4.6,
+   "ring_med_above": 28.4,
+   "ring_min_above": -9.4,
+   "frac_ring_higher": 0.92,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.74159,
+   "lon": -64.385,
+   "area_ha": 1.0,
+   "eq_diam_m": 115,
+   "compact": 0.53,
+   "z_patch": 770.0,
+   "flat_std": 6.0,
+   "ring_med_above": 28.3,
+   "ring_min_above": -14.9,
+   "frac_ring_higher": 0.92,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.80097,
+   "lon": -64.30167,
+   "area_ha": 0.9,
+   "eq_diam_m": 110,
+   "compact": 0.59,
+   "z_patch": 477.7,
+   "flat_std": 7.4,
+   "ring_med_above": 27.6,
+   "ring_min_above": -8.6,
+   "frac_ring_higher": 0.87,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.17306,
+   "lon": -64.38278,
+   "area_ha": 0.9,
+   "eq_diam_m": 104,
+   "compact": 0.48,
+   "z_patch": 587.5,
+   "flat_std": 0.2,
+   "ring_med_above": 24.8,
+   "ring_min_above": -0.5,
+   "frac_ring_higher": 0.95,
+   "edm": [
+    10
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.87964,
+   "lon": -64.54138,
+   "area_ha": 2.5,
+   "eq_diam_m": 177,
+   "compact": 0.72,
+   "z_patch": 1648.0,
+   "flat_std": 0.0,
+   "ring_med_above": 24.5,
+   "ring_min_above": 4.0,
+   "frac_ring_higher": 0.98,
+   "edm": [
+    9
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.79533,
+   "lon": -64.31035,
+   "area_ha": 1.0,
+   "eq_diam_m": 115,
+   "compact": 0.62,
+   "z_patch": 514.9,
+   "flat_std": 4.6,
+   "ring_med_above": 24.5,
+   "ring_min_above": -18.8,
+   "frac_ring_higher": 0.9,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.82907,
+   "lon": -64.93194,
+   "area_ha": 1.3,
+   "eq_diam_m": 130,
+   "compact": 0.7,
+   "z_patch": 484.1,
+   "flat_std": 2.4,
+   "ring_med_above": 23.1,
+   "ring_min_above": 6.1,
+   "frac_ring_higher": 1.0,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.75398,
+   "lon": -64.37833,
+   "area_ha": 0.9,
+   "eq_diam_m": 104,
+   "compact": 0.56,
+   "z_patch": 724.6,
+   "flat_std": 4.2,
+   "ring_med_above": 22.5,
+   "ring_min_above": -5.2,
+   "frac_ring_higher": 0.91,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.19096,
+   "lon": -64.36033,
+   "area_ha": 1.0,
+   "eq_diam_m": 115,
+   "compact": 0.62,
+   "z_patch": 579.5,
+   "flat_std": 3.0,
+   "ring_med_above": 22.5,
+   "ring_min_above": 0.0,
+   "frac_ring_higher": 0.88,
+   "edm": [
+    10,
+    11
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.98181,
+   "lon": -64.63204,
+   "area_ha": 2.0,
+   "eq_diam_m": 159,
+   "compact": 0.52,
+   "z_patch": 308.0,
+   "flat_std": 0.2,
+   "ring_med_above": 21.6,
+   "ring_min_above": -1.0,
+   "frac_ring_higher": 0.9,
+   "edm": [
+    10
+   ],
+   "flm": [
+    1
+   ]
+  },
+  {
+   "lat": 4.83067,
+   "lon": -64.92647,
+   "area_ha": 0.9,
+   "eq_diam_m": 110,
+   "compact": 0.59,
+   "z_patch": 486.7,
+   "flat_std": 3.3,
+   "ring_med_above": 21.5,
+   "ring_min_above": 0.7,
+   "frac_ring_higher": 0.89,
+   "edm": [
+    4
+   ],
+   "flm": [
+    1
+   ]
+  }
+ ]
+}

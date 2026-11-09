@@ -1,0 +1,55 @@
+{
+ "tiles": [
+  "N04_00_W065_00"
+ ],
+ "patches": [
+  {
+   "code": 9,
+   "lat": 4.87964,
+   "lon": -64.54138,
+   "area_ha": 2.5,
+   "eq_diam_m": 177,
+   "z": 1648.0,
+   "ring_min": 4.0,
+   "ring_med": 23.9,
+   "ring_max": 78.9,
+   "frac_ring_above": 1.0
+  },
+  {
+   "code": 9,
+   "lat": 4.68061,
+   "lon": -64.22518,
+   "area_ha": 3.6,
+   "eq_diam_m": 214,
+   "z": 1303.0,
+   "ring_min": 1.9,
+   "ring_med": 16.3,
+   "ring_max": 45.5,
+   "frac_ring_above": 1.0
+  },
+  {
+   "code": 9,
+   "lat": 4.68565,
+   "lon": -64.2185,
+   "area_ha": 7.0,
+   "eq_diam_m": 299,
+   "z": 1315.0,
+   "ring_min": -27.6,
+   "ring_med": 12.5,
+   "ring_max": 33.6,
+   "frac_ring_above": 0.88
+  },
+  {
+   "code": 9,
+   "lat": 4.67766,
+   "lon": -64.22198,
+   "area_ha": 1.6,
+   "eq_diam_m": 143,
+   "z": 1307.0,
+   "ring_min": -0.7,
+   "ring_med": 12.4,
+   "ring_max": 22.0,
+   "frac_ring_above": 0.93
+  }
+ ]
+}

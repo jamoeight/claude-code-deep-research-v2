@@ -1,0 +1,4 @@
+*.npy
+data/scan/tiles/*.err
+data/waterfalls/tiles/*.err
+__pycache__/
