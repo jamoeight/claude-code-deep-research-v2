@@ -1,4 +1,7 @@
 *.npy
+*.tif
+*.tiff
+__pycache__/
+data/T*/
 data/scan/tiles/*.err
 data/waterfalls/tiles/*.err
-__pycache__/
