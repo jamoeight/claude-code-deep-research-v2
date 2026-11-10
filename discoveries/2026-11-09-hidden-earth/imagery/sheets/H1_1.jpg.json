@@ -1,0 +1,122 @@
+[
+ {
+  "id": "H1-E00-Assur-calib",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E00-Assur-calib_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E00-Assur-calib_dem.jpg"
+ },
+ {
+  "id": "H1-E01",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E01_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E01_dem.jpg"
+ },
+ {
+  "id": "H1-E02",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E02_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E02_dem.jpg"
+ },
+ {
+  "id": "H1-E03",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E03_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E03_dem.jpg"
+ },
+ {
+  "id": "H1-E04",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E04_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E04_dem.jpg"
+ },
+ {
+  "id": "H1-E05",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E05_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E05_dem.jpg"
+ },
+ {
+  "id": "H1-E06",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E06_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E06_dem.jpg"
+ },
+ {
+  "id": "H1-E07",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E07_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E07_dem.jpg"
+ },
+ {
+  "id": "H1-E08",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E08_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E08_dem.jpg"
+ },
+ {
+  "id": "H1-E09",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E09_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E09_dem.jpg"
+ },
+ {
+  "id": "H1-E10",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E10_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E10_dem.jpg"
+ },
+ {
+  "id": "H1-E11",
+  "s2_meta": {
+   "scene": "S2B_38SLE_20231013_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E11_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H1-E11_dem.jpg"
+ }
+]

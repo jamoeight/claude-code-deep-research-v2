@@ -20,7 +20,10 @@ rows = json.load(open(f"{D}/data/private/mounds/{zone}.json"))
 for r in rows:
     r["size"] = r["area_ha"] * min(r["rel_m"], 30)
     r["pleiades"], r["pl_km"] = near_pleiades(r["lat"], r["lon"])
-sel = [r for r in rows if r["rel_m"] >= 4 and r["nbr3km"] <= 4]
+BOX = {"iraq_akkad_diyala": (33.0, 34.35, 43.85, 44.95)}
+b = BOX.get(zone)
+sel = [r for r in rows if 4 <= r["rel_m"] <= 25 and r["ring_range_m"] <= 2.5 and 1.5 <= r["area_ha"] <= 120 and r["nbr3km"] <= 4
+       and (b is None or (b[0] <= r["lat"] <= b[1] and b[2] <= r["lon"] <= b[3]))]
 sel.sort(key=lambda r: -r["size"])
 print(zone, len(rows), "mounds;", len(sel), "pass;", sum(1 for r in sel if r["pleiades"]), "near Pleiades")
 for i, r in enumerate(sel[:topn]):

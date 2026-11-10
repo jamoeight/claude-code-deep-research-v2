@@ -1,0 +1,42 @@
+[
+ {
+  "id": "H2-cal-jumaymah",
+  "s2_meta": {
+   "scene": "S2B_38RLT_20241024_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-jumaymah_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-jumaymah_dem.jpg"
+ },
+ {
+  "id": "H2-cal-ashar",
+  "s2_meta": {
+   "scene": "S2A_38RLS_20231005_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-ashar_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-ashar_dem.jpg"
+ },
+ {
+  "id": "H2-cal-fayd",
+  "s2_meta": {
+   "scene": "S2A_38RKR_20231207_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-fayd_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-fayd_dem.jpg"
+ },
+ {
+  "id": "H2-cal-ghamra",
+  "s2_meta": {
+   "scene": "S2B_37QFE_20231003_0_L2A",
+   "local_cloud": 0.0,
+   "nodata": 0.0
+  },
+  "s2": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-ghamra_s2.jpg",
+  "dem": "/home/user/claude-code-deep-research-v2/discoveries/2026-11-09-hidden-earth/tools/../imagery/chips/H2-cal-ghamra_dem.jpg"
+ }
+]
