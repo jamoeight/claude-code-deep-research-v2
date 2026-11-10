@@ -11,3 +11,5 @@ imagery/chips/
 *.err
 notes_private/
 data/private/
+data/H*/
+imagery/sheets/H*
