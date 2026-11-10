@@ -281,3 +281,99 @@ The fort symbol on the Virginea Pars map patch, plus Border-ware finds on the we
 ## Limits
 
 Sub-metre imagery hosts, Wikipedia, GBIF and most journals were unreachable from the sandbox, and the web-search budget ran out early. A usage limit also interrupted eight teams. Novelty checks are therefore partial: verify before citing.
+## H. Round 2: human-made sites (9-10 Nov 2026)
+
+Three teams worked on lost capitals from texts, missing stations on ancient roads and ruined desert towns. A fourth search, my elevation-model tell finder, found Tell Brak blind among 242 Khabur tells. Every lead was looked at in Sentinel-2 and the DEM. **Coordinates of possibly unrecorded or looting-prone sites are rounded to 0.1° (about 10 km) in this public copy.** Exact positions are only in the owner's private report.
+
+### H1. Oval fortified mound with keep and moat, east of Zaranj (Afghan Sistan)
+`30.9, 62.0` ±10 km · NOVEL-SYNTHESIS · confidence 55/100 · looting-sensitive
+
+An 11.5 m oval mound (210 × 135 m) with a 45 m rectangular building on top and a ring about 300 m across around it, like a moat or outer wall. A 70 m square enclosure sits 2.3 km NNW. It has the shape of a Sistan qal'a. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* Mud-brick walls, a gate gap in the outer ring, and wind-cut erosion ridges around the base. Rule out a natural yardang reused by modern buildings.
+
+### H2. Abandoned grid town around a 12.7 m tell, NE of Pust-i Gau (Afghan Sistan)
+`31.3, 62.1` ±10 km · NOVEL-SYNTHESIS · confidence 45/100 · looting-sensitive
+
+A rectilinear grid of compounds covering at least 1 km² around a roughly 200 m mound. Its tone in the short-wave infrared matches the mud-brick walls of Pust-i Gau, 6 km away. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* Courtyard houses in a grid, streets, a citadel on the mound, canal lines leading in.
+
+### H3. Square walled enclosure (qal'a?) on a rise, Afghan Sistan
+`30.9, 62.1` ±10 km · NOVEL-SYNTHESIS · confidence 40/100 · looting-sensitive
+
+A crisp 100 m square with thick walls (black in SWIR) and a 30-40 m ring beside it, on an 8.6 m rise. It is either a caravanserai or fort, or a modern compound or security post. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* Corner towers and a central courtyard suggest a caravanserai or fort. Vehicles, razor wire or new roofs mean it is modern.
+
+### H4. Rampart-ringed oval mound in abandoned fields, SE of Pust-i Gau
+`31.2, 62.1` ±10 km · NOVEL-SYNTHESIS · confidence 40/100 · looting-sensitive
+
+A 420 × 270 m oval with a dark raised rim, 8.7 m high in the DEM, sitting among relict strip fields. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* A rampart circuit and interior building mounds.
+
+### H5. Walled oval enclosure on a mound, north of Zaranj (Afghan Sistan)
+`31.3, 61.9` ±10 km · NOVEL-SYNTHESIS · confidence 30/100 · looting-sensitive
+
+The lead's DEM tell finder flagged a 21 ha, 11 m mound. In Sentinel-2 it shows a bounded oval enclosure about 400 m across. This is an independent hit in the same corridor as H1-H4. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* An enclosure wall on the mound.
+
+### H6. Opis (Upi), and possibly Akshak, at Tulul al-Mujaili' on a relict Diyala levee
+`33.2, 44.7` ±10 km · PROPOSED · confidence 40/100 · looting-sensitive
+
+Opis was a major Tigris-Diyala city of Babylonian and Persian times. The DEM puts the proposed mound on a NNW-SSE relict levee 15 km NE of Ctesiphon, which splits at a distributary node 6.5 km SSW. The channel link is new; the identification is published. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* A 500 × 200 m low mound and the levee ridge running past it.
+
+### H7. Aratu, a lost Roman road station = the fort at Zawiyet el-Agdab (Egypt)
+`31.3906, 25.5039` ±3 km · NOVEL-SYNTHESIS · confidence 35/100
+
+Aratu is on the Tabula Peutingeriana but unlocated in the Barrington Atlas. Its road distances (Catabathmus 28, Nesus 26 Roman miles) put the distance-only point in the sea, so the station must lie inland. The only recorded Roman fort within 9 km of the inland solution fits the distances to within 6%.
+
+*What to look for:* A square Roman fort a few tens of metres across.
+
+### H8. Atil, the Khazar capital, tested at Samosdelka (Volga delta)
+`46.024, 47.8398` ±3 km · PROPOSED · confidence 15/100
+
+Raised ground on both banks of a 250-300 m channel, with an island at a fork, matches the Arab 'twin city on both banks' layout. Each bank is far smaller than the accounts imply, though, and a 2020 review rejected the identification.
+
+*What to look for:* Settlement ground on both banks of the Staraya Volga channel.
+
+### H9. Ekallatum zone, 18 km north of Assur: a salvage priority
+`35.6, 43.2` ±10 km · PROPOSED · confidence 20/100 · looting-sensitive
+
+Ekallatum was Shamshi-Adad I's royal city. The published '18 km north of Assur, west bank' lands on a terrace-edge town, and no floodplain tell of 4 m or more lies below it. The whole valley is in the Makhul dam reservoir zone, where construction resumed in 2021. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* A terrace-edge tell under or beside the modern town.
+
+### H10. Merrha of Isidore of Charax = Mari (Tell Hariri)?
+`34.6, 40.9` ±10 km · NOVEL-SYNTHESIS · confidence 30/100 · looting-sensitive
+
+Five schoeni below Dura, with the schoenus calibrated on the Dura-Anatho leg, lands 2.6 km from Mari along the river. The name Merrha echoes Mari. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* Mari's great tell beside the Euphrates.
+
+### H11. Zalpuwa 'on the sea' at İkiztepe (Kızılırmak delta)
+`41.6189, 35.8436` ±3 km · PROPOSED · confidence 25/100
+
+An isolated 22 m hill at the inner edge of a delta that held lagoons until about 4,000 years ago, 7.7 km from today's coast. That fits Zalpuwa 'on the sea' in the Old Assyrian era.
+
+*What to look for:* An excavated hill above a flat delta.
+
+### H12. al-Afa'iya water station on the Darb Zubayda pilgrim road (Saudi Arabia)
+`23.0, 40.8` ±14 km · PROPOSED · confidence 25/100 · looting-sensitive
+
+The 32/34-mile interpolation between Mahd adh-Dhahab and Faydat al-Mislah falls 1.25 km from a bright 70-90 m square at the edge of a clay pan. It could be a plastered birka (Abbasid reservoir). (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* A square or round stone-lined reservoir with a settling tank. Only 2 of 4 known tanks show at 10 m, so zoom in.
+
+### H13. Round wooded settlement mounds, central Mali
+`13.2, -5.5` ±10 km · NOVEL-SYNTHESIS · confidence 20/100 · looting-sensitive
+
+The DEM tell finder found a 55 ha, 6 m round mound with a dark wooded cap beside the river. A second one, 85 ha and 12 m, sits at [location withheld]. Their shape is typical of abandoned Middle Niger towns. Regional registers could not be checked. (Location rounded to about 10 km in the public copy.)
+
+*What to look for:* Pottery-strewn mound surfaces, house-wall rings and erosion gullies.
+
+Round-2 negative results: the Daryalyk/Sarykamysh delta, the Loulan/Kongque area (10 m cannot separate walls from yardangs), the Murghab northern fringe and south Sistan showed nothing convincing. The 'Centum Putea' square near Palmyra is most likely a modern hafir (rainwater pond). Most DEM tell-finder hits in Cholistan, the Inland Niger Delta and Kanem were dunes, natural hills or modern villages on mounds.
