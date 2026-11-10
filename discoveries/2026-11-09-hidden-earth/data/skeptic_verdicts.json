@@ -1,0 +1,16 @@
+{
+ "A1": {"verdict": "Not found in the literature", "note": "The Kew/Bayliss/Timberlake satellite-led programme (Mabu, Namuli, Inago, Chiperone, Cucutea, Ribáuè, Mchese) does not list these massifs. The region is actively worked, so treat them as unsurveyed in print, not proven unvisited."},
+ "A2": {"verdict": "Not found as a named field", "note": "No catalogued Algerian volcanic field sits here (Atakor, Tahalra, Manzaz, In Teria and In Ezzane are elsewhere). The craters' form matches the In Teria and Oukcem maars, so this is most likely an unmapped maar/tuff-ring group. That is a real geological gap, though not an impact."},
+ "A3": {"verdict": "Region known; this spot possibly known", "note": "Darai is a classic giant-doline province. A 1993 Centre Terre caving report lists a 'Mégadoline' on the Darai plateau that may be this feature; its coordinates could not be read."},
+ "A4": {"verdict": "Region known; these spots unreported", "note": "IRD/LIPI expeditions (2010-2017) describe Lengguru dolines and poljes in general. Copernicus is a surface model, so forest canopy and radar shadow can exaggerate depth; cross-check in another DEM."},
+ "A5": {"verdict": "Not found as a named fall", "note": "This is the Hindenburg Wall escarpment zone. Check whether the Ok Menga hydro scheme diverts this river."},
+ "A6": {"verdict": "Not found as a named fall", "note": "Ethiopian escarpments hold hundreds of unnamed seasonal falls, so the novelty value is modest."},
+ "B1": {"verdict": "Variant of published work", "note": "Kawakami (2022, Akkadica 143) already locates Akkade by reconstructing old Tigris courses, and Ziegler favours the Adhaim confluence. This spot, about 20 km NW of Tell Sinker, is a variant of their hypothesis."},
+ "B2": {"verdict": "Confirmed as Kawakami's candidate", "note": "His project calls it the leading candidate, and a Japan-Iraq survey runs 2024-2027."},
+ "B4": {"verdict": "Zone known", "note": "Stein searched the desert north of the Chira/Domoko area for this city. No coordinate-level proposal at this point was found; exclude Dandan-Uiliq, Ulugh-Mazar and Karadong first."},
+ "B5": {"verdict": "Not found", "note": "al-Bakri's royal town has never been located, and no targeted search NNW of Koumbi Saleh was found. Check Berthier 1997 first."},
+ "B6": {"verdict": "Partly done already", "note": "Sieh et al. 2020 reported Ar-Ar dates. No new paleomagnetic or Ar-Ar data from inside the outline since then, so an independent dating test is a real but narrow gap."},
+ "B8": {"verdict": "Known", "note": "Documented by NDRRMA/ICIMOD and widely reported in August 2026. Kept here as a check that the location method works."},
+ "W1": {"verdict": "Not found", "note": "No named fall found; searched only lightly."},
+ "W4": {"verdict": "Not found", "note": "No named fall found; searched only lightly."}
+}

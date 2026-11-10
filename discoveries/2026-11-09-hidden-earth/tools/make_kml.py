@@ -2,7 +2,7 @@
 import json, sys, html
 from xml.sax.saxutils import escape
 
-COL = {"A": "ff0000ff", "B": "ff00a5ff", "C": "ff00ffff", "calib": "ffaaaaaa"}
+COL = {"A": "ff0000ff", "B": "ff00a5ff", "C": "ff00ffff", "W": "ffffaa00", "calib": "ffaaaaaa"}
 
 def main(inp, outp):
     F = json.load(open(inp))

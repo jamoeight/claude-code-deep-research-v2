@@ -1,0 +1,388 @@
+<title>Hidden Earth Field Notes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a surveyor's field book. Single reading column, figures full width, a magenta "chart overprint" accent as on topographic sheets. */
+:root{
+  --paper:#f1f3ef; --panel:#ffffff; --ink:#1c2630; --muted:#5b6670; --rule:#d5dbd6;
+  --over:#a8285f; --over-soft:#f6e3ec; --novel:#1f6f4a; --novel-soft:#e1f1e8; --prop:#7a5a12; --prop-soft:#f5ecd6;
+  --part:#2c5d8a; --part-soft:#e2ecf6; --known:#5b6670; --known-soft:#e7eaec;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#11171c; --panel:#182129; --ink:#dde4e1; --muted:#97a3ab; --rule:#2a353e;
+  --over:#e46a9e; --over-soft:#3a1d2b; --novel:#6fd3a0; --novel-soft:#173328; --prop:#e2c171; --prop-soft:#352c14;
+  --part:#8fbbe6; --part-soft:#1a2c3d; --known:#a3aeb5; --known-soft:#232d35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11171c; --panel:#182129; --ink:#dde4e1; --muted:#97a3ab; --rule:#2a353e;
+  --over:#e46a9e; --over-soft:#3a1d2b; --novel:#6fd3a0; --novel-soft:#173328; --prop:#e2c171; --prop-soft:#352c14;
+  --part:#8fbbe6; --part-soft:#1a2c3d; --known:#a3aeb5; --known-soft:#232d35; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.6rem,7vw,4.2rem);line-height:.95;text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase;border-top:3px solid var(--ink);padding-top:10px}
+h3{font-size:1.6rem;line-height:1.1}
+p{margin:0}
+a{color:var(--over)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--over);outline-offset:2px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--over)}
+.intro{display:flex;flex-direction:column;gap:14px}
+.intro p{max-width:65ch}
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--rule);background:var(--panel)}
+.ledger div{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:2px;min-width:0}
+.ledger b{font-family:var(--f-display);font-size:1.9rem;line-height:1;font-variant-numeric:tabular-nums}
+.ledger span{font-size:.85rem;color:var(--muted)}
+.section{display:flex;flex-direction:column;gap:18px}
+.section > p{max-width:65ch;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.big{border-top:4px solid var(--over)}
+.card header{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fid{font-family:var(--f-mono);font-weight:500;color:var(--over)}
+.cat{font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.chip{font-family:var(--f-mono);font-size:.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:.05em}
+.chip.nov{background:var(--novel-soft);color:var(--novel)} .chip.pro{background:var(--prop-soft);color:var(--prop)}
+.chip.par{background:var(--part-soft);color:var(--part)} .chip.kno,.chip.unc{background:var(--known-soft);color:var(--known)}
+.chip.loot{background:var(--over-soft);color:var(--over)}
+.coord{font-family:var(--f-mono);font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+figure{margin:0;display:flex;flex-direction:column;gap:6px}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+figcaption{font-size:.8rem;color:var(--muted)}
+.lede{font-size:1.05rem}
+.vlab{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--over);margin-right:4px}
+.look,.verdict{font-size:.95rem}
+.verdict{border-left:3px solid var(--part);padding-left:10px}
+details summary{cursor:pointer;font-family:var(--f-mono);font-size:.82rem;color:var(--muted)}
+details ul{margin:8px 0 0;padding-left:20px;font-size:.92rem}
+.team{font-size:.82rem;color:var(--muted);margin-top:6px}
+.conf{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.bar{flex:0 1 160px;height:6px;background:var(--known-soft);position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--over)}
+.cnum{font-variant-numeric:tabular-nums}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-family:var(--f-mono);font-size:.82rem}
+.copy{font:inherit;background:none;border:1px solid var(--rule);color:var(--ink);padding:3px 8px;cursor:pointer}
+.copy:hover{border-color:var(--over)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+td.mono,.mono{font-family:var(--f-mono);font-size:.82rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+td .sub{color:var(--muted);font-size:.85rem;margin-top:4px}
+td .verdict{margin-top:6px;font-size:.85rem}
+.grid2{display:grid;grid-template-columns:1fr;gap:18px}
+.note{background:var(--panel);border:1px solid var(--rule);padding:16px;display:flex;flex-direction:column;gap:10px}
+.note ul{margin:0;padding-left:20px}
+.note li + li{margin-top:6px}
+code{font-family:var(--f-mono);font-size:.85em}
+@media (prefers-reduced-motion: no-preference){.card{transition:border-color .2s}.card:hover{border-color:var(--over)}}
+</style>
+
+<div class="wrap">
+<section class="intro">
+  <span class="eyebrow">Operation Hidden Earth · overnight run · 9–10 Nov 2026</span>
+  <h1>Hidden Earth<br>Field Notes</h1>
+  <p>Ten research teams ran overnight, each in one domain: lost capitals, buried Silk Road towns, Saharan mysteries, missing impact craters, unsurveyed forests, giant sinkholes, unmined lidar, lost colonial forts, brand-new landforms and desert megastructures. Each team joined independent clues (old itineraries, river paleochannels, tektite chemistry, canopy-height maps) into coordinates. Alongside them I ran two planet-scale scans of my own: one for craters across 2,887 desert elevation tiles, one for tall waterfalls across seven mountain regions. Every lead was then checked in Sentinel-2 imagery and the Copernicus elevation model, and a skeptic tried to find each one already published.</p>
+  <p>Nothing here is a confirmed discovery yet. These are the places where the clues converge and where, as far as we could find, nobody has looked closely. Each card opens in Google Earth, which has the sub-metre imagery that this sandbox could not reach.</p>
+  <div class="ledger">
+    <div><b>10</b><span>research teams</span></div>
+    <div><b>91</b><span>candidates proposed</span></div>
+    <div><b>2,887</b><span>1°×1° desert tiles scanned for craters</span></div>
+    <div><b>384</b><span>mountain tiles scanned for waterfalls</span></div>
+    <div><b>13</b><span>claims put through a skeptic pass</span></div>
+    <div><b>46</b><span>places in this notebook and the KML</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Look here first</h2>
+  <p>New leads from our own analysis. Two of them, the Mabu-east forest and the Algerian crater field, turned up no prior record in the skeptic pass.</p>
+  
+<article class="card big" id="A1">
+  <header><span class="fid">A1</span><span class="cat">Biodiversity</span><span class="chip nov">New synthesis</span></header>
+  <h3>Unsurveyed forest massif 20 km east of Mount Mabu (Mozambique)</h3>
+  <p class="coord">16.3040° S, 36.5860° E · ±3 km</p>
+  <figure><img src="figures/mabu_east.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Unsurveyed forest massif 20 km east of Mount Mabu (Mozambique)" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">After Mabu itself, this is the strongest tall-canopy (&gt;20 m) signal in northern Mozambique: about 11 km² on a ridge with about 940 m of relief. It may be the next &#x27;Google Earth forest&#x27;.</p>
+  <p class="look"><span class="vlab">What to look for</span> A closed, dark-green canopy on the ridge crest that stands out from the miombo and farmland around it. Compare it with Mabu&#x27;s forest 20 km to the west. Rule out tea or eucalyptus plantations, which grow in neat blocks.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found in the literature</b>. The Kew/Bayliss/Timberlake satellite-led programme (Mabu, Namuli, Inago, Chiperone, Cucutea, Ribáuè, Mchese) does not list these massifs. The region is actively worked, so treat them as unsurveyed in print, not proven unvisited.</p>
+  <details><summary>Evidence chain</summary><ul><li>T5 isolated-summit scan over 11-18°S, 33-41°E, with tall-canopy fraction from the Meta 1 m canopy-height map (Mabu core 16.6%, miombo 0.6%)</li><li>Mabu was found exactly this way, from imagery, by Bayliss in 2005, and was then shown to hold many new species</li><li>A second, weaker massif sits at -16.354, 36.734</li><li>Lead&#x27;s search found no published survey of a massif east of Mabu (Mabu literature only)</li></ul><p class="team">Source: T5 + lead</p></details>
+  <div class="conf" title="Team confidence 40/100"><span class="clab">Confidence</span><span class="bar"><i style="width:40%"></i></span><span class="cnum">40</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@-16.30400,36.58600,0a,14000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@-16.30400,36.58600,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="-16.30400, 36.58600">Copy -16.30400, 36.58600</button></div>
+</article>
+<article class="card big" id="A2">
+  <header><span class="fid">A2</span><span class="cat">Geology</span><span class="chip nov">New synthesis</span></header>
+  <h3>Field of rimmed bowl craters, Amadror/Tefedest (Algeria)</h3>
+  <p class="coord">25.2600° N, 6.1300° E · ±20 km</p>
+  <figure><img src="figures/alg_cluster_A.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Field of rimmed bowl craters, Amadror/Tefedest (Algeria)" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">The global crater scan found at least 7 rimmed bowls 0.45-1.35 km wide and 30-135 m deep in dark rock. Their clustering points to a volcanic maar or tuff-ring field, not an impact.</p>
+  <p class="look"><span class="vlab">What to look for</span> Round craters with raised rims and pale clay floors. Check whether this is a catalogued Hoggar volcanic district. If not, it is an undocumented maar field.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found as a named field</b>. No catalogued Algerian volcanic field sits here (Atakor, Tahalra, Manzaz, In Teria and In Ezzane are elsewhere). The craters&#x27; form matches the In Teria and Oukcem maars, so this is most likely an unmapped maar/tuff-ring group. That is a real geological gap, though not an impact.</p>
+  <details><summary>Evidence chain</summary><ul><li>Global DEM crater scan (2,887 tiles) found Tenoumer, Talemzane, Amguid, Wolfe Creek and Barringer blind</li><li>Not in the scan&#x27;s volcanic exclusion list. A second cluster sits at 25.09N 8.00E (3 craters, white floors)</li></ul><p class="team">Source: lead</p></details>
+  <div class="conf" title="Team confidence 20/100"><span class="clab">Confidence</span><span class="bar"><i style="width:20%"></i></span><span class="cnum">20</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@25.26000,6.13000,0a,40000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@25.26000,6.13000,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="25.26000, 6.13000">Copy 25.26000, 6.13000</button></div>
+</article>
+<article class="card big" id="A3">
+  <header><span class="fid">A3</span><span class="cat">Karst</span><span class="chip par">Region known, spot unconfirmed</span></header>
+  <h3>Giant round doline, Darai Plateau (PNG)</h3>
+  <p class="coord">6.8594° S, 143.2436° E · ±0.5 km</p>
+  <figure><img src="figures/darai_doline.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Giant round doline, Darai Plateau (PNG)" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">A near-perfect closed sinkhole about 1.3 km across and about 260 m deep in the Copernicus DEM, inside the Darai polygonal karst.</p>
+  <p class="look"><span class="vlab">What to look for</span> A round, forest-lined pit far larger than the cockpit hollows around it. Tilt the 3D view to see the wall depth. A 30 m DEM under-reads deep pits, so the real depth may be larger.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Region known; this spot possibly known</b>. Darai is a classic giant-doline province. A 1993 Centre Terre caving report lists a &#x27;Mégadoline&#x27; on the Darai plateau that may be this feature; its coordinates could not be read.</p>
+  <details><summary>Evidence chain</summary><ul><li>T6 closed-depression detector, calibrated on Xiaozhai tiankeng and on Sima Humboldt and Sima Martel</li><li>The floor elevation is measured TanDEM-X data, not void fill (checked in the DEM)</li><li>Lead&#x27;s 3 km DEM/S2 view: the feature dwarfs every neighbouring doline (figure)</li></ul><p class="team">Source: T6 + lead</p></details>
+  <div class="conf" title="Team confidence 45/100"><span class="clab">Confidence</span><span class="bar"><i style="width:45%"></i></span><span class="cnum">45</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@-6.85940,143.24360,0a,5000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@-6.85940,143.24360,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="-6.85940, 143.24360">Copy -6.85940, 143.24360</button></div>
+</article>
+<article class="card big" id="A4">
+  <header><span class="fid">A4</span><span class="cat">Karst</span><span class="chip par">Region known, spot unconfirmed</span></header>
+  <h3>Twin giant closed basins, Lengguru fold belt (West Papua)</h3>
+  <p class="coord">3.2692° S, 133.8425° E · ±0.8 km</p>
+  <figure><img src="figures/lengguru_B.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Twin giant closed basins, Lengguru fold belt (West Papua)" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">Two closed karst depressions about 220 m and 255 m deep (sister basin at -3.3492, 133.9714), in a fold belt that cavers have barely visited.</p>
+  <p class="look"><span class="vlab">What to look for</span> Forested elongated pits or uvalas with steep walls. The sister basin&#x27;s floor was a radar void, which often means a very deep shaft.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Region known; these spots unreported</b>. IRD/LIPI expeditions (2010-2017) describe Lengguru dolines and poljes in general. Copernicus is a surface model, so forest canopy and radar shadow can exaggerate depth; cross-check in another DEM.</p>
+  <details><summary>Evidence chain</summary><ul><li>T6 DEM depression detector</li><li>Lengguru has very few caving expeditions on record (T6 literature sweep)</li></ul><p class="team">Source: T6</p></details>
+  <div class="conf" title="Team confidence 40/100"><span class="clab">Confidence</span><span class="bar"><i style="width:40%"></i></span><span class="cnum">40</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@-3.26920,133.84250,0a,8000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@-3.26920,133.84250,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="-3.26920, 133.84250">Copy -3.26920, 133.84250</button></div>
+</article>
+<article class="card big" id="A5">
+  <header><span class="fid">A5</span><span class="cat">Waterfalls</span><span class="chip nov">New synthesis</span></header>
+  <h3>Star Mountains escarpment fall, east of Tabubil (PNG)</h3>
+  <p class="coord">5.2633° S, 141.3469° E · ±0.5 km</p>
+  <figure><img src="figures/star_mtns_fall.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Star Mountains escarpment fall, east of Tabubil (PNG)" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">A 42 km² channel drops about 600 m over about 450 m horizontally, the same DEM shape as Angel Falls. Sentinel-2 shows white water in a slot gorge.</p>
+  <p class="look"><span class="vlab">What to look for</span> White water threading down the escarpment slot. On karst it could be a dry hanging valley outside storms.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found as a named fall</b>. This is the Hindenburg Wall escarpment zone. Check whether the Ok Menga hydro scheme diverts this river.</p>
+  <details><summary>Evidence chain</summary><ul><li>T6 DEM fall detector, which measured Angel Falls at 936 m to within 2 km</li><li>Lead&#x27;s Sentinel-2 close-up (figure)</li></ul><p class="team">Source: T6 + lead</p></details>
+  <div class="conf" title="Team confidence 30/100"><span class="clab">Confidence</span><span class="bar"><i style="width:30%"></i></span><span class="cnum">30</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@-5.26330,141.34690,0a,4000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@-5.26330,141.34690,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="-5.26330, 141.34690">Copy -5.26330, 141.34690</button></div>
+</article>
+<article class="card big" id="A6">
+  <header><span class="fid">A6</span><span class="cat">Waterfalls</span><span class="chip nov">New synthesis</span></header>
+  <h3>Gorge-head waterfall candidate, Ethiopian highlands</h3>
+  <p class="coord">7.8824° N, 39.8034° E · ±0.5 km</p>
+  <figure><img src="figures/ethiopia_fall.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Gorge-head waterfall candidate, Ethiopian highlands" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">The DEM knickpoint scan found a river leaving the farmed plateau and dropping at least 170 m into a box canyon. Its catchment is very large (the DEM figure is about 10,600 km²).</p>
+  <p class="look"><span class="vlab">What to look for</span> A plunge or cascade at the head of the canyon. Look in the wet season (Jul-Sep): in the dry season it may be a dry lip.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found as a named fall</b>. Ethiopian escarpments hold hundreds of unnamed seasonal falls, so the novelty value is modest.</p>
+  <details><summary>Evidence chain</summary><ul><li>Lead&#x27;s waterfall finder found Angel Falls and Kaieteur blind</li><li>Knickpoint test: the step is 5x steeper than the reaches above and below, so it is a discrete step, not a steady gorge</li></ul><p class="team">Source: lead</p></details>
+  <div class="conf" title="Team confidence 25/100"><span class="clab">Confidence</span><span class="bar"><i style="width:25%"></i></span><span class="cnum">25</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@7.88242,39.80336,0a,4000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@7.88242,39.80336,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="7.88242, 39.80336">Copy 7.88242, 39.80336</button></div>
+</article>
+</section>
+
+<section class="section">
+  <h2>Old mysteries, sharpened</h2>
+  <p>Famous unsolved locations where the teams narrowed the search, proposed a new test, or confirmed someone else's candidate. Imagery at 10 m cannot settle these; Google Earth's close-ups and fieldwork can.</p>
+  <div class="grid2">
+<article class="card " id="B1">
+  <header><span class="fid">B1</span><span class="cat">Lost cities</span><span class="chip par">Region known, spot unconfirmed</span><span class="chip loot">Looting-sensitive region</span></header>
+  <h3>Akkad (Agade): relict-Tigris / paleo-Adhaim junction</h3>
+  <p class="coord">33.9700° N, 44.2300° E · ±8 km</p>
+  <figure><img src="figures/akkad_junction.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Akkad (Agade): relict-Tigris / paleo-Adhaim junction" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">Akkad is the only Mesopotamian imperial capital never found. A DEM-traced relict Tigris belt splits from today&#x27;s river 15 km from where the Adhaim reaches the floodplain, which joins Ziegler&#x27;s confluence idea to Kawakami&#x27;s ancient-riverbed idea.</p>
+  <p class="look"><span class="vlab">What to look for</span> Tells (low mounds of a few hundred metres) along the dry channel belt between Balad and Ad-Dujayl.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Variant of published work</b>. Kawakami (2022, Akkadica 143) already locates Akkade by reconstructing old Tigris courses, and Ziegler favours the Adhaim confluence. This spot, about 20 km NW of Tell Sinker, is a variant of their hypothesis.</p>
+  <details><summary>Evidence chain</summary><ul><li>T1 DEM channel tracing</li><li>Kawakami&#x27;s candidate, Tell Sinker (33.798, 44.324), has been under Japan-Iraq survey since 2025 (PROPOSED). The DEM shows an 8.6 m mound on the same ~50 km cutoff</li></ul><p class="team">Source: T1</p></details>
+  <div class="conf" title="Team confidence 6/100"><span class="clab">Confidence</span><span class="bar"><i style="width:6%"></i></span><span class="cnum">6</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@33.97000,44.23000,0a,25000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@33.97000,44.23000,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="33.97000, 44.23000">Copy 33.97000, 44.23000</button></div>
+</article>
+<article class="card " id="B2">
+  <header><span class="fid">B2</span><span class="cat">Lost cities</span><span class="chip pro">Proposed by others</span><span class="chip loot">Looting-sensitive region</span></header>
+  <h3>Tell Sinker, Kawakami&#x27;s Akkad candidate</h3>
+  <p class="coord">33.7981° N, 44.3244° E · ±1 km</p>
+  <figure><img src="figures/akkad_sinker.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Tell Sinker, Kawakami&#x27;s Akkad candidate" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">An 8.6 m mound sitting on a dry, roughly 50 km cutoff of the Tigris (Balad to Taji).</p>
+  <p class="look"><span class="vlab">What to look for</span> A mound rising above the fields.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Confirmed as Kawakami&#x27;s candidate</b>. His project calls it the leading candidate, and a Japan-Iraq survey runs 2024-2027.</p>
+  <details><summary>Evidence chain</summary><ul><li>T1</li></ul><p class="team">Source: T1</p></details>
+  <div class="conf" title="Team confidence 15/100"><span class="clab">Confidence</span><span class="bar"><i style="width:15%"></i></span><span class="cnum">15</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@33.79810,44.32440,0a,4000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@33.79810,44.32440,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="33.79810, 44.32440">Copy 33.79810, 44.32440</button></div>
+</article>
+<article class="card " id="B3">
+  <header><span class="fid">B3</span><span class="cat">Meteorites</span><span class="chip nov">New synthesis</span></header>
+  <h3>Chinguetti meteorite: the never-searched midpoint</h3>
+  <p class="coord">20.6800° N, 11.9400° W · ±12 km</p>
+  <figure><img src="figures/chinguetti_mid.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Chinguetti meteorite: the never-searched midpoint" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">In 1916 Ripert reported a 100 m iron &#x27;hill&#x27;. The blacksmiths&#x27; account puts a house-sized iron block halfway to Ouadane (about 46 km). The 2024 route paper searched only 12-22 km out. A straight ridge about 60 m high and 20 km long here has never been examined.</p>
+  <p class="look"><span class="vlab">What to look for</span> A dark, smooth, isolated mass among the dunes. Check whether the ridge is sand or rock.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T3 reading of arXiv:2402.14150 (Warren et al. 2024)</li><li>Unsurveyed tall dunes in SW Les Boucles (20.36, -12.44) and the NW Batraz megadunes (20.19, -12.005) also fit the bearings</li></ul><p class="team">Source: T3</p></details>
+  <div class="conf" title="Team confidence 3/100"><span class="clab">Confidence</span><span class="bar"><i style="width:3%"></i></span><span class="cnum">3</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@20.68000,-11.94000,0a,40000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@20.68000,-11.94000,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="20.68000, -11.94000">Copy 20.68000, -11.94000</button></div>
+</article>
+<article class="card " id="B4">
+  <header><span class="fid">B4</span><span class="cat">Lost cities</span><span class="chip par">Region known, spot unconfirmed</span></header>
+  <h3>Ho-lao-lo-kia, Xuanzang&#x27;s sand-buried city</h3>
+  <p class="coord">37.5500° N, 80.5800° E · ±30 km</p>
+  
+  <p class="lede">Xuanzang places it north of Khotan, with a survivor who fled east to Pi-mo (Uzun-tati), and says it was already a sand mound in 644. That rules out Dandan Oilik, Karadong and Yuansha. The DEM puts the dry downstream end of Pi-mo&#x27;s streams here.</p>
+  <p class="look"><span class="vlab">What to look for</span> Rectilinear walls, dark wood/rammed-earth scatters and old canal lines between dunes.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Zone known</b>. Stein searched the desert north of the Chira/Domoko area for this city. No coordinate-level proposal at this point was found; exclude Dandan-Uiliq, Ulugh-Mazar and Karadong first.</p>
+  <details><summary>Evidence chain</summary><ul><li>T2 geodesy on the Da Tang Xiyu Ji</li><li>Calibrated li length 282 m. Xuanzang&#x27;s &#x27;old Tukhara&#x27; town is refined to 37.78, 83.67, 12 km west of the later Endere fort</li></ul><p class="team">Source: T2</p></details>
+  <div class="conf" title="Team confidence 20/100"><span class="clab">Confidence</span><span class="bar"><i style="width:20%"></i></span><span class="cnum">20</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@37.55000,80.58000,0a,60000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@37.55000,80.58000,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="37.55000, 80.58000">Copy 37.55000, 80.58000</button></div>
+</article>
+<article class="card " id="B5">
+  <header><span class="fid">B5</span><span class="cat">Lost cities</span><span class="chip nov">New synthesis</span></header>
+  <h3>al-Ghaba, the royal town of ancient Ghana</h3>
+  <p class="coord">15.8460° N, 8.0170° W · ±7 km</p>
+  <figure><img src="figures/ghaba.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for al-Ghaba, the royal town of ancient Ghana" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">al-Bakri (1068) puts the king&#x27;s town 6 miles from the Muslim town (Koumbi Saleh). That distance meets a low plain with seasonal ponds north-west to north of Koumbi Saleh, and two unexplained &#x27;built-up&#x27; land-cover pixels.</p>
+  <p class="look"><span class="vlab">What to look for</span> Stone house mounds and enclosure walls on the low plain, especially near 15.8239, -7.9902.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found</b>. al-Bakri&#x27;s royal town has never been located, and no targeted search NNW of Koumbi Saleh was found. Check Berthier 1997 first.</p>
+  <details><summary>Evidence chain</summary><ul><li>T8 itinerary math + DEM + ESA WorldCover</li></ul><p class="team">Source: T8</p></details>
+  <div class="conf" title="Team confidence 10/100"><span class="clab">Confidence</span><span class="bar"><i style="width:10%"></i></span><span class="cnum">10</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@15.84600,-8.01700,0a,25000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@15.84600,-8.01700,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="15.84600, -8.01700">Copy 15.84600, -8.01700</button></div>
+</article>
+<article class="card " id="B6">
+  <header><span class="fid">B6</span><span class="cat">Impact craters</span><span class="chip par">Region known, spot unconfirmed</span></header>
+  <h3>Australasian tektite crater: a falsifiable test of Bolaven</h3>
+  <p class="coord">15.2030° N, 106.2710° E · ±10 km</p>
+  <figure><img src="figures/bolaven.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Australasian tektite crater: a falsifiable test of Bolaven" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">This is the source of the largest young strewn field (788 ka), still missing. Two lava flows inside Sieh et al.&#x27;s proposed outline are magnetically reversed. If they date to more than 788 ka, Bolaven is falsified; if they date to 773-788 ka, it is strongly supported.</p>
+  <p class="look"><span class="vlab">What to look for</span> Nothing visible from orbit: the crater is buried under basalt. This is a fieldwork test.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Partly done already</b>. Sieh et al. 2020 reported Ar-Ar dates. No new paleomagnetic or Ar-Ar data from inside the outline since then, so an independent dating test is a real but narrow gap.</p>
+  <details><summary>Evidence chain</summary><ul><li>T4: post-2020 critiques (Mizera 2022, Mizera &amp; Strunga 2024, Seydoux-Guillaume 2024)</li><li>A re-run microtektite fit favours about 12°N 106°E and argues against Badain Jaran</li></ul><p class="team">Source: T4</p></details>
+  <div class="conf" title="Team confidence 35/100"><span class="clab">Confidence</span><span class="bar"><i style="width:35%"></i></span><span class="cnum">35</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@15.20300,106.27100,0a,40000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@15.20300,106.27100,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="15.20300, 106.27100">Copy 15.20300, 106.27100</button></div>
+</article>
+<article class="card " id="B7">
+  <header><span class="fid">B7</span><span class="cat">Lost cities</span><span class="chip pro">Proposed by others</span></header>
+  <h3>Njimi, first capital of Kanem = Tié?</h3>
+  <p class="coord">14.1210° N, 15.7290° E · ±8 km</p>
+  <figure><img src="figures/njimi_tie.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Njimi, first capital of Kanem = Tié?" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">DAI/Frobenius identification: a 3.2 ha fired-brick enclosure locally called &#x27;Njimi-ye&#x27;, dated to the 11th-14th centuries, about 45 km east of Mao.</p>
+  <p class="look"><span class="vlab">What to look for</span> A rectangular brick enclosure among the dunes.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T8</li></ul><p class="team">Source: T8</p></details>
+  <div class="conf" title="Team confidence 60/100"><span class="clab">Confidence</span><span class="bar"><i style="width:60%"></i></span><span class="cnum">60</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@14.12100,15.72900,0a,20000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@14.12100,15.72900,12z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="14.12100, 15.72900">Copy 14.12100, 15.72900</button></div>
+</article>
+<article class="card " id="B8">
+  <header><span class="fid">B8</span><span class="cat">Dynamic Earth</span><span class="chip kno">Known</span></header>
+  <h3>Lhende Khola 2026 landslide-dam site (Nepal-Tibet)</h3>
+  <p class="coord">28.3340° N, 85.4840° E · ±1 km</p>
+  <figure><img src="figures/lhende_dam.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Lhende Khola 2026 landslide-dam site (Nepal-Tibet)" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">The 2026 barrier lake reported by Chinese state TV and Nepal&#x27;s NDRRMA/ICIMOD. The team pinned its location independently from Sentinel-2 debris and DEM elevation, which matched the published reports. It drained by late September 2026.</p>
+  <p class="look"><span class="vlab">What to look for</span> Fresh debris fan at the junction with the main valley. Compare 2025-10-21 with 2026-10-26.</p>
+  <p class="verdict"><span class="vlab">Skeptic check</span> <b>Known</b>. Documented by NDRRMA/ICIMOD and widely reported in August 2026. Kept here as a check that the location method works.</p>
+  <details><summary>Evidence chain</summary><ul><li>T9</li></ul><p class="team">Source: T9</p></details>
+  <div class="conf" title="Team confidence 90/100"><span class="clab">Confidence</span><span class="bar"><i style="width:90%"></i></span><span class="cnum">90</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@28.33400,85.48400,0a,6000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@28.33400,85.48400,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="28.33400, 85.48400">Copy 28.33400, 85.48400</button></div>
+</article>
+<article class="card " id="B9">
+  <header><span class="fid">B9</span><span class="cat">Lost cities</span><span class="chip pro">Proposed by others</span></header>
+  <h3>Tarhuntassa (lost Hittite capital) at Türkmen-Karahöyük</h3>
+  <p class="coord">37.5710° N, 32.7421° E · ±5 km</p>
+  <figure><img src="figures/tarhuntassa_tkh.jpg" alt="Sentinel-2 true colour (left) and Copernicus DEM hillshade (right) for Tarhuntassa (lost Hittite capital) at Türkmen-Karahöyük" loading="lazy"><figcaption>Left: Sentinel-2 true colour, 10 m. Right: Copernicus GLO-30 elevation, hillshaded. Red cross = coordinate.</figcaption></figure>
+  <p class="lede">This is the Massa/Osborne candidate (Hartapu inscription). The DEM shows a 30 m mound of the right size. The candidate is contested by the Hulaya-frontier reading, whose alternative is the Karadağ/Kızıldağ zone.</p>
+  <p class="look"><span class="vlab">What to look for</span> A large round höyük in the Konya plain.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T1</li></ul><p class="team">Source: T1</p></details>
+  <div class="conf" title="Team confidence 25/100"><span class="clab">Confidence</span><span class="bar"><i style="width:25%"></i></span><span class="cnum">25</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@37.57100,32.74210,0a,8000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@37.57100,32.74210,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="37.57100, 32.74210">Copy 37.57100, 32.74210</button></div>
+</article>
+<article class="card " id="B10">
+  <header><span class="fid">B10</span><span class="cat">Lost cities</span><span class="chip pro">Proposed by others</span></header>
+  <h3>Itj-tawy, Middle Kingdom capital of Egypt</h3>
+  <p class="coord">29.5720° N, 31.2360° E · ±2 km</p>
+  
+  <p class="lede">The town centre lies beneath fields east of the Lisht pyramids. Cores reach a Middle Kingdom layer at 5 m.</p>
+  <p class="look"><span class="vlab">What to look for</span> Nothing visible: it is buried under cultivation.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T1</li></ul><p class="team">Source: T1</p></details>
+  <div class="conf" title="Team confidence 50/100"><span class="clab">Confidence</span><span class="bar"><i style="width:50%"></i></span><span class="cnum">50</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@29.57200,31.23600,0a,8000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@29.57200,31.23600,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="29.57200, 31.23600">Copy 29.57200, 31.23600</button></div>
+</article>
+<article class="card " id="B11">
+  <header><span class="fid">B11</span><span class="cat">Lost colonial sites</span><span class="chip pro">Proposed by others</span></header>
+  <h3>La Navidad (Columbus, 1492) at En Bas Saline</h3>
+  <p class="coord">19.7250° N, 72.1250° W · ±2.5 km</p>
+  
+  <p class="lede">Three diary distances fit together. They also put the Santa María wreck offshore near 19.80, -72.143.</p>
+  <p class="look"><span class="vlab">What to look for</span> Reef flats offshore; the site itself needs geophysics.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T8</li></ul><p class="team">Source: T8</p></details>
+  <div class="conf" title="Team confidence 55/100"><span class="clab">Confidence</span><span class="bar"><i style="width:55%"></i></span><span class="cnum">55</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@19.72500,-72.12500,0a,8000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@19.72500,-72.12500,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="19.72500, -72.12500">Copy 19.72500, -72.12500</button></div>
+</article>
+<article class="card " id="B12">
+  <header><span class="fid">B12</span><span class="cat">Lost colonial sites</span><span class="chip pro">Proposed by others</span></header>
+  <h3>Fort Caroline (1564), St Johns Bluff vicinity</h3>
+  <p class="coord">30.3840° N, 81.4970° W · ±3 km</p>
+  
+  <p class="lede">&#x27;South side, six miles from the mouth&#x27; measures 10.0 km, which lands on the bluff forest. The Altamaha and St Marys alternatives are untested.</p>
+  <p class="look"><span class="vlab">What to look for</span> Bluff-top clearings.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T8</li></ul><p class="team">Source: T8</p></details>
+  <div class="conf" title="Team confidence 40/100"><span class="clab">Confidence</span><span class="bar"><i style="width:40%"></i></span><span class="cnum">40</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@30.38400,-81.49700,0a,8000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@30.38400,-81.49700,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="30.38400, -81.49700">Copy 30.38400, -81.49700</button></div>
+</article>
+<article class="card " id="B13">
+  <header><span class="fid">B13</span><span class="cat">Lost colonial sites</span><span class="chip pro">Proposed by others</span></header>
+  <h3>Roanoke Lost Colony: Site X</h3>
+  <p class="coord">36.0030° N, 76.7100° W · ±4 km</p>
+  
+  <p class="lede">The fort symbol on the Virginea Pars map patch, plus Border-ware finds on the western Albemarle shore.</p>
+  <p class="look"><span class="vlab">What to look for</span> Shoreline fields.</p>
+  
+  <details><summary>Evidence chain</summary><ul><li>T8</li></ul><p class="team">Source: T8</p></details>
+  <div class="conf" title="Team confidence 35/100"><span class="clab">Confidence</span><span class="bar"><i style="width:35%"></i></span><span class="cnum">35</span></div>
+  <div class="links"><a href="https://earth.google.com/web/@36.00300,-76.71000,0a,8000d,35y,0h,45t,0r" target="_blank" rel="noopener">Open in Google Earth</a><a href="https://www.google.com/maps/@36.00300,-76.71000,15z/data=!3m1!1e3" target="_blank" rel="noopener">Google Maps satellite</a><button type="button" class="copy" data-c="36.00300, -76.71000">Copy 36.00300, -76.71000</button></div>
+</article></div>
+</section>
+
+<section class="section">
+  <h2>Boxes worth browsing</h2>
+  <p>Survey gaps: places where a known kind of structure (Amazon geoglyphs, desert kites, steppe geoglyphs, mustatils, gas-blowout craters) should keep going but nobody has mapped. We tested known geoglyphs and kites in 10 m Sentinel-2 and they are invisible there, so these need Google Earth at full zoom.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Box</th><th>Centre</th><th>Open</th></tr></thead><tbody><tr><td class='mono'>C1</td><td>Amazon geoglyph gap: north of the Abunã<div class='sub'>About 700 km² was cleared in 2019-24. There are no catalogued earthworks against Walker et al. 2023, though a known cluster lies just west.</div></td><td class='mono'>-9.2500, -65.4500</td><td><a href='https://earth.google.com/web/@-9.25000,-65.45000,0a,60000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-9.25000,-65.45000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C2</td><td>Amazon geoglyph gap: Upper Tapajós / Paranaíta<div class='sub'>Extends de Souza&#x27;s 2018 belt of ditched villages. 1,341 km² cleared, none catalogued.</div></td><td class='mono'>-9.4500, -56.9500</td><td><a href='https://earth.google.com/web/@-9.45000,-56.95000,0a,60000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-9.45000,-56.95000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C3</td><td>Amazon geoglyph gap: Jaci-Paraná / Nova Mamoré<div class='sub'>63% cleared, sitting between two known clusters.</div></td><td class='mono'>-9.8500, -64.9500</td><td><a href='https://earth.google.com/web/@-9.85000,-64.95000,0a,60000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-9.85000,-64.95000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C4</td><td>Geoglyph plateau across the Peru-Bolivia border (Iñapari)<div class='sub'>The Acre geoglyph plateau continues across the border, where survey effort drops.</div></td><td class='mono'>-11.4500, -69.4500</td><td><a href='https://earth.google.com/web/@-11.45000,-69.45000,0a,60000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-11.45000,-69.45000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C5</td><td>Desert kites: Jebel as-Sawda rim (Libya)<div class='sub'>A basalt rim adjoining the 330+ known Hamada al-Hamra kites. The Globalkites survey stops at Arabia.</div></td><td class='mono'>28.9000, 15.1500</td><td><a href='https://earth.google.com/web/@28.90000,15.15000,0a,40000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@28.90000,15.15000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C6</td><td>Turgai-type geoglyphs: Ubagan valley (Kazakhstan)<div class='sub'>81% unploughed lake-terrace grassland, the same setting as Ushtogay Square, lying between the Turgai core and the Kostanay Tetragon.</div></td><td class='mono'>51.7000, 64.5000</td><td><a href='https://earth.google.com/web/@51.70000,64.50000,0a,40000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@51.70000,64.50000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C7</td><td>Desert kites: Betpak-Dala escarpment (Kazakhstan)<div class='sub'>An 80 m escarpment like the kite-bearing chinks of the Ustyurt, about 110 km east of the dataset&#x27;s kite limit.</div></td><td class='mono'>45.7000, 67.4500</td><td><a href='https://earth.google.com/web/@45.70000,67.45000,0a,40000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@45.70000,67.45000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C8</td><td>Mustatils: Hisma basin NW of Tabuk (Saudi Arabia)<div class='sub'>A corridor between the AlUla/Tayma mustatil core and the southern Jordan rectangles.</div></td><td class='mono'>29.3000, 35.7500</td><td><a href='https://earth.google.com/web/@29.30000,35.75000,0a,40000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@29.30000,35.75000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C9</td><td>Next Yamal gas-blowout crater: search box<div class='sub'>4-5 of the roughly 8 known giant craters cluster here near the Bovanenkovo pipeline. Our 2025-26 Sentinel-2 change scan found none new.</div></td><td class='mono'>70.0600, 68.7000</td><td><a href='https://earth.google.com/web/@70.06000,68.70000,0a,60000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@70.06000,68.70000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C10</td><td>New unnamed islands, NE Greenland (Storstrømmen/Zachariae)<div class='sub'>The island inventory stops at 2020, and Pelto notes islands released by retreating ice since then.</div></td><td class='mono'>77.2000, -22.5000</td><td><a href='https://earth.google.com/web/@77.20000,-22.50000,0a,80000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@77.20000,-22.50000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>C11</td><td>Ahnet-Tidikelt Holocene megalake basin (Algeria)<div class='sub'>A DEM-derived highstand lake basin of about 9,000 km². Its inflow deltas are the best targets for Holocene shoreline sites.</div></td><td class='mono'>25.6600, 1.5400</td><td><a href='https://earth.google.com/web/@25.66000,1.54000,0a,50000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@25.66000,1.54000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr></tbody></table></div>
+</section>
+
+<section class="section">
+  <h2>Waterfall scan shortlist</h2>
+  <p>River reaches where the elevation drops in a discrete step: at least 2.5 times steeper than the reaches above and below. The same test finds Angel Falls and Kaieteur blind. The 30 m DEM under-reads tall falls, so real drops can be larger.</p>
+  <figure><img src="figures/scan_waterfalls_top24.jpg" alt="Contact sheet of the top 24 waterfall-scan candidates in Sentinel-2 and DEM hillshade" loading="lazy"><figcaption>Top 24 knickpoints. WF02 is Kaieteur Falls, found blind.</figcaption></figure>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Candidate</th><th>Coordinate</th><th>Open</th></tr></thead><tbody><tr><td class='mono'>W1</td><td>Waterfall candidate (Ethiopia)<div class='sub'>DEM step of 147 m over 127 m; knickpoint ratio 20.6; catchment about 2322 km²; lip at 1837 m.</div><p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found</b>. No named fall found; searched only lightly.</p></td><td class='mono'>12.4700, 39.2353</td><td><a href='https://earth.google.com/web/@12.47000,39.23525,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@12.47000,39.23525,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W2</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 131 m over 127 m; knickpoint ratio 5.3; catchment about 2742 km²; lip at 840 m.</div></td><td class='mono'>-6.7146, 144.5312</td><td><a href='https://earth.google.com/web/@-6.71457,144.53119,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-6.71457,144.53119,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W3</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 148 m over 127 m; knickpoint ratio 21.7; catchment about 601 km²; lip at 2455 m.</div></td><td class='mono'>-3.8743, 137.0855</td><td><a href='https://earth.google.com/web/@-3.87430,137.08547,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-3.87430,137.08547,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W4</td><td>Waterfall candidate (Ethiopia)<div class='sub'>DEM step of 151 m over 127 m; knickpoint ratio 4.6; catchment about 1842 km²; lip at 2292 m.</div><p class="verdict"><span class="vlab">Skeptic check</span> <b>Not found</b>. No named fall found; searched only lightly.</p></td><td class='mono'>7.6521, 39.9335</td><td><a href='https://earth.google.com/web/@7.65206,39.93347,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@7.65206,39.93347,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W5</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 100 m over 90 m; knickpoint ratio 3.6; catchment about 9502 km²; lip at 1473 m.</div></td><td class='mono'>-4.4188, 139.1439</td><td><a href='https://earth.google.com/web/@-4.41879,139.14393,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-4.41879,139.14393,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W6</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 137 m over 127 m; knickpoint ratio 2.7; catchment about 4166 km²; lip at 2833 m.</div></td><td class='mono'>-4.1221, 137.6319</td><td><a href='https://earth.google.com/web/@-4.12208,137.63194,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-4.12208,137.63194,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W7</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 113 m over 127 m; knickpoint ratio 2.8; catchment about 7532 km²; lip at 3305 m.</div></td><td class='mono'>-4.1295, 137.5221</td><td><a href='https://earth.google.com/web/@-4.12948,137.52206,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-4.12948,137.52206,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W8</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 176 m over 127 m; knickpoint ratio 4.0; catchment about 854 km²; lip at 1742 m.</div></td><td class='mono'>-5.8882, 146.0382</td><td><a href='https://earth.google.com/web/@-5.88819,146.03819,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-5.88819,146.03819,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W9</td><td>Waterfall candidate (NewGuinea)<div class='sub'>DEM step of 164 m over 127 m; knickpoint ratio 3.9; catchment about 1071 km²; lip at 1166 m.</div></td><td class='mono'>-6.1618, 142.9669</td><td><a href='https://earth.google.com/web/@-6.16179,142.96694,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-6.16179,142.96694,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>W10</td><td>Waterfall candidate (Ethiopia)<div class='sub'>DEM step of 111 m over 127 m; knickpoint ratio 5.4; catchment about 2310 km²; lip at 2043 m.</div></td><td class='mono'>12.6053, 38.7252</td><td><a href='https://earth.google.com/web/@12.60533,38.72522,0a,3500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@12.60533,38.72522,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr></tbody></table></div>
+</section>
+
+<section class="section">
+  <h2>How the crater hunt came out</h2>
+  <div class="note">
+    <p>The scan looked for round, rimmed bowls 0.25 to 8 km wide in Copernicus elevation data across the Sahara, Arabia, Australia, the Atacama, the Namib-Kalahari, Iran, Central Asia, the Gobi-Tarim, Patagonia and the US Southwest. Run blind, it put Tenoumer, Talemzane, Amguid, Wolfe Creek and Meteor Crater at or near the top of their tiles.</p>
+    <p>It did <b>not</b> find a convincing new impact crater. After removing known craters and volcanic fields, 226 candidates were left. In Sentinel-2 almost all of them were megadune hollows, open-pit mines or maar fields. The useful by-product is lead A2: a cluster of maar-like craters in Algeria that no catalogue we could find lists.</p>
+  </div>
+  <figure><img src="figures/scan_craters_top20.jpg" alt="Contact sheet of the top 20 non-volcanic crater candidates" loading="lazy"><figcaption>Top 20 non-volcanic crater candidates: mostly dune hollows (orange), plus a mine and maar-like bowls in dark rock.</figcaption></figure>
+</section>
+
+<section class="section">
+  <h2>Calibration targets</h2>
+  <p>Known places used to show that each method finds real things.</p>
+  <figure><img src="figures/meteor_calib.jpg" alt="Meteor Crater in Sentinel-2 and DEM" loading="lazy"><figcaption>Meteor Crater, Arizona, as the pipeline renders it.</figcaption></figure>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Target</th><th>Coordinate</th><th>Open</th></tr></thead><tbody><tr><td class='mono'>K1</td><td>Meteor Crater (crater-scan check)<div class='sub'>Found blind by the DEM crater scan.</div></td><td class='mono'>35.0275, -111.0225</td><td><a href='https://earth.google.com/web/@35.02750,-111.02250,0a,3000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@35.02750,-111.02250,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>K2</td><td>Tenoumer crater (crater-scan check)<div class='sub'>The only candidate the scan returned in its 1°×1° tile.</div></td><td class='mono'>22.9180, -10.4080</td><td><a href='https://earth.google.com/web/@22.91800,-10.40800,0a,4000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@22.91800,-10.40800,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>K3</td><td>Kaieteur Falls (waterfall-scan check)<div class='sub'>Found blind by the waterfall scan and passed the knickpoint (discrete-step) test.</div></td><td class='mono'>5.1750, -59.4800</td><td><a href='https://earth.google.com/web/@5.17500,-59.48000,0a,4000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@5.17500,-59.48000,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>K4</td><td>Angel Falls (waterfall-scan check)<div class='sub'>Top-ranked of 102 candidates in its tile.</div></td><td class='mono'>5.9675, -62.5356</td><td><a href='https://earth.google.com/web/@5.96750,-62.53560,0a,4000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@5.96750,-62.53560,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>K5</td><td>Mount Mabu forest (sky-island check)<div class='sub'>The 2005 Google-Earth discovery that A3 is modelled on.</div></td><td class='mono'>-16.2900, 36.4000</td><td><a href='https://earth.google.com/web/@-16.29000,36.40000,0a,14000d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@-16.29000,36.40000,12z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr><tr><td class='mono'>K6</td><td>Ushtogay Square geoglyph<div class='sub'>Shows what Turgai geoglyphs look like (sub-metre imagery needed).</div></td><td class='mono'>50.8329, 65.3263</td><td><a href='https://earth.google.com/web/@50.83290,65.32630,0a,2500d,35y,0h,45t,0r' target='_blank' rel='noopener'>Earth</a> · <a href='https://www.google.com/maps/@50.83290,65.32630,15z/data=!3m1!1e3' target='_blank' rel='noopener'>Maps</a></td></tr></tbody></table></div>
+</section>
+
+<section class="section">
+  <h2>Limits of this run</h2>
+  <div class="note"><ul>
+    <li>The sandbox could not reach Google, Esri or other sub-metre imagery, Wikipedia, GBIF or most journals. Imagery checks used Sentinel-2 (10 m) and Copernicus GLO-30. Literature checks used search snippets.</li>
+    <li>Two hard caps cut the run short. A usage limit stopped eight teams mid-run (they resumed and wrote up), and the web-search budget ran out early. Several novelty checks are therefore partial.</li>
+    <li>Copernicus is a surface model: forest canopy and radar shadow can distort depths in steep jungle karst. A3 and A4 should be checked in another elevation model.</li>
+    <li>Archaeological leads in Iraq and Libya carry a looting-sensitivity flag.</li>
+  </ul></div>
+  <p>Files are on the <code>claude/funny-cerf-pncujk</code> branch under <code>discoveries/2026-11-09-hidden-earth/</code>: <code>hidden_earth.kml</code> (open it in Google Earth to load every pin), <code>findings.json</code>, the ten team notebooks, the skeptic review and the scan tools.</p>
+</section>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-c'), old=b.textContent;
+    function done(ok){b.textContent=ok?'Copied':'Select: '+t;setTimeout(function(){b.textContent=old},1600)}
+    try{navigator.clipboard.writeText(t).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
+  });
+});
+</script>

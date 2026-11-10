@@ -1,0 +1,160 @@
+<title>Hidden Earth Field Notes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a surveyor's field book. Single reading column, figures full width, a magenta "chart overprint" accent as on topographic sheets. */
+:root{
+  --paper:#f1f3ef; --panel:#ffffff; --ink:#1c2630; --muted:#5b6670; --rule:#d5dbd6;
+  --over:#a8285f; --over-soft:#f6e3ec; --novel:#1f6f4a; --novel-soft:#e1f1e8; --prop:#7a5a12; --prop-soft:#f5ecd6;
+  --part:#2c5d8a; --part-soft:#e2ecf6; --known:#5b6670; --known-soft:#e7eaec;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#11171c; --panel:#182129; --ink:#dde4e1; --muted:#97a3ab; --rule:#2a353e;
+  --over:#e46a9e; --over-soft:#3a1d2b; --novel:#6fd3a0; --novel-soft:#173328; --prop:#e2c171; --prop-soft:#352c14;
+  --part:#8fbbe6; --part-soft:#1a2c3d; --known:#a3aeb5; --known-soft:#232d35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11171c; --panel:#182129; --ink:#dde4e1; --muted:#97a3ab; --rule:#2a353e;
+  --over:#e46a9e; --over-soft:#3a1d2b; --novel:#6fd3a0; --novel-soft:#173328; --prop:#e2c171; --prop-soft:#352c14;
+  --part:#8fbbe6; --part-soft:#1a2c3d; --known:#a3aeb5; --known-soft:#232d35; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.6rem,7vw,4.2rem);line-height:.95;text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase;border-top:3px solid var(--ink);padding-top:10px}
+h3{font-size:1.6rem;line-height:1.1}
+p{margin:0}
+a{color:var(--over)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--over);outline-offset:2px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--over)}
+.intro{display:flex;flex-direction:column;gap:14px}
+.intro p{max-width:65ch}
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--rule);background:var(--panel)}
+.ledger div{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:2px;min-width:0}
+.ledger b{font-family:var(--f-display);font-size:1.9rem;line-height:1;font-variant-numeric:tabular-nums}
+.ledger span{font-size:.85rem;color:var(--muted)}
+.section{display:flex;flex-direction:column;gap:18px}
+.section > p{max-width:65ch;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.big{border-top:4px solid var(--over)}
+.card header{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fid{font-family:var(--f-mono);font-weight:500;color:var(--over)}
+.cat{font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.chip{font-family:var(--f-mono);font-size:.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:.05em}
+.chip.nov{background:var(--novel-soft);color:var(--novel)} .chip.pro{background:var(--prop-soft);color:var(--prop)}
+.chip.par{background:var(--part-soft);color:var(--part)} .chip.kno,.chip.unc{background:var(--known-soft);color:var(--known)}
+.chip.loot{background:var(--over-soft);color:var(--over)}
+.coord{font-family:var(--f-mono);font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+figure{margin:0;display:flex;flex-direction:column;gap:6px}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+figcaption{font-size:.8rem;color:var(--muted)}
+.lede{font-size:1.05rem}
+.vlab{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--over);margin-right:4px}
+.look,.verdict{font-size:.95rem}
+.verdict{border-left:3px solid var(--part);padding-left:10px}
+details summary{cursor:pointer;font-family:var(--f-mono);font-size:.82rem;color:var(--muted)}
+details ul{margin:8px 0 0;padding-left:20px;font-size:.92rem}
+.team{font-size:.82rem;color:var(--muted);margin-top:6px}
+.conf{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.bar{flex:0 1 160px;height:6px;background:var(--known-soft);position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--over)}
+.cnum{font-variant-numeric:tabular-nums}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-family:var(--f-mono);font-size:.82rem}
+.copy{font:inherit;background:none;border:1px solid var(--rule);color:var(--ink);padding:3px 8px;cursor:pointer}
+.copy:hover{border-color:var(--over)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+td.mono,.mono{font-family:var(--f-mono);font-size:.82rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+td .sub{color:var(--muted);font-size:.85rem;margin-top:4px}
+td .verdict{margin-top:6px;font-size:.85rem}
+.grid2{display:grid;grid-template-columns:1fr;gap:18px}
+.note{background:var(--panel);border:1px solid var(--rule);padding:16px;display:flex;flex-direction:column;gap:10px}
+.note ul{margin:0;padding-left:20px}
+.note li + li{margin-top:6px}
+code{font-family:var(--f-mono);font-size:.85em}
+@media (prefers-reduced-motion: no-preference){.card{transition:border-color .2s}.card:hover{border-color:var(--over)}}
+</style>
+
+<div class="wrap">
+<section class="intro">
+  <span class="eyebrow">Operation Hidden Earth · overnight run · 9–10 Nov 2026</span>
+  <h1>Hidden Earth<br>Field Notes</h1>
+  <p>Ten research teams ran overnight, each in one domain: lost capitals, buried Silk Road towns, Saharan mysteries, missing impact craters, unsurveyed forests, giant sinkholes, unmined lidar, lost colonial forts, brand-new landforms and desert megastructures. Each team joined independent clues (old itineraries, river paleochannels, tektite chemistry, canopy-height maps) into coordinates. Alongside them I ran two planet-scale scans of my own: one for craters across 2,887 desert elevation tiles, one for tall waterfalls across seven mountain regions. Every lead was then checked in Sentinel-2 imagery and the Copernicus elevation model, and a skeptic tried to find each one already published.</p>
+  <p>Nothing here is a confirmed discovery yet. These are the places where the clues converge and where, as far as we could find, nobody has looked closely. Each card opens in Google Earth, which has the sub-metre imagery that this sandbox could not reach.</p>
+  <div class="ledger">
+    <div><b>10</b><span>research teams</span></div>
+    <div><b>91</b><span>candidates proposed</span></div>
+    <div><b>2,887</b><span>1°×1° desert tiles scanned for craters</span></div>
+    <div><b>384</b><span>mountain tiles scanned for waterfalls</span></div>
+    <div><b>13</b><span>claims put through a skeptic pass</span></div>
+    <div><b>{{NTOT}}</b><span>places in this notebook and the KML</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Look here first</h2>
+  <p>New leads from our own analysis. Two of them, the Mabu-east forest and the Algerian crater field, turned up no prior record in the skeptic pass.</p>
+  {{A}}
+</section>
+
+<section class="section">
+  <h2>Old mysteries, sharpened</h2>
+  <p>Famous unsolved locations where the teams narrowed the search, proposed a new test, or confirmed someone else's candidate. Imagery at 10 m cannot settle these; Google Earth's close-ups and fieldwork can.</p>
+  <div class="grid2">{{B}}</div>
+</section>
+
+<section class="section">
+  <h2>Boxes worth browsing</h2>
+  <p>Survey gaps: places where a known kind of structure (Amazon geoglyphs, desert kites, steppe geoglyphs, mustatils, gas-blowout craters) should keep going but nobody has mapped. We tested known geoglyphs and kites in 10 m Sentinel-2 and they are invisible there, so these need Google Earth at full zoom.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Box</th><th>Centre</th><th>Open</th></tr></thead><tbody>{{C}}</tbody></table></div>
+</section>
+
+<section class="section">
+  <h2>Waterfall scan shortlist</h2>
+  <p>River reaches where the elevation drops in a discrete step: at least 2.5 times steeper than the reaches above and below. The same test finds Angel Falls and Kaieteur blind. The 30 m DEM under-reads tall falls, so real drops can be larger.</p>
+  <figure><img src="figures/scan_waterfalls_top24.jpg" alt="Contact sheet of the top 24 waterfall-scan candidates in Sentinel-2 and DEM hillshade" loading="lazy"><figcaption>Top 24 knickpoints. WF02 is Kaieteur Falls, found blind.</figcaption></figure>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Candidate</th><th>Coordinate</th><th>Open</th></tr></thead><tbody>{{W}}</tbody></table></div>
+</section>
+
+<section class="section">
+  <h2>How the crater hunt came out</h2>
+  <div class="note">
+    <p>The scan looked for round, rimmed bowls 0.25 to 8 km wide in Copernicus elevation data across the Sahara, Arabia, Australia, the Atacama, the Namib-Kalahari, Iran, Central Asia, the Gobi-Tarim, Patagonia and the US Southwest. Run blind, it put Tenoumer, Talemzane, Amguid, Wolfe Creek and Meteor Crater at or near the top of their tiles.</p>
+    <p>It did <b>not</b> find a convincing new impact crater. After removing known craters and volcanic fields, 226 candidates were left. In Sentinel-2 almost all of them were megadune hollows, open-pit mines or maar fields. The useful by-product is lead A2: a cluster of maar-like craters in Algeria that no catalogue we could find lists.</p>
+  </div>
+  <figure><img src="figures/scan_craters_top20.jpg" alt="Contact sheet of the top 20 non-volcanic crater candidates" loading="lazy"><figcaption>Top 20 non-volcanic crater candidates: mostly dune hollows (orange), plus a mine and maar-like bowls in dark rock.</figcaption></figure>
+</section>
+
+<section class="section">
+  <h2>Calibration targets</h2>
+  <p>Known places used to show that each method finds real things.</p>
+  <figure><img src="figures/meteor_calib.jpg" alt="Meteor Crater in Sentinel-2 and DEM" loading="lazy"><figcaption>Meteor Crater, Arizona, as the pipeline renders it.</figcaption></figure>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Target</th><th>Coordinate</th><th>Open</th></tr></thead><tbody>{{K}}</tbody></table></div>
+</section>
+
+<section class="section">
+  <h2>Limits of this run</h2>
+  <div class="note"><ul>
+    <li>The sandbox could not reach Google, Esri or other sub-metre imagery, Wikipedia, GBIF or most journals. Imagery checks used Sentinel-2 (10 m) and Copernicus GLO-30. Literature checks used search snippets.</li>
+    <li>Two hard caps cut the run short. A usage limit stopped eight teams mid-run (they resumed and wrote up), and the web-search budget ran out early. Several novelty checks are therefore partial.</li>
+    <li>Copernicus is a surface model: forest canopy and radar shadow can distort depths in steep jungle karst. A3 and A4 should be checked in another elevation model.</li>
+    <li>Archaeological leads in Iraq and Libya carry a looting-sensitivity flag.</li>
+  </ul></div>
+  <p>Files are on the <code>claude/funny-cerf-pncujk</code> branch under <code>discoveries/2026-11-09-hidden-earth/</code>: <code>hidden_earth.kml</code> (open it in Google Earth to load every pin), <code>findings.json</code>, the ten team notebooks, the skeptic review and the scan tools.</p>
+</section>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-c'), old=b.textContent;
+    function done(ok){b.textContent=ok?'Copied':'Select: '+t;setTimeout(function(){b.textContent=old},1600)}
+    try{navigator.clipboard.writeText(t).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
+  });
+});
+</script>
