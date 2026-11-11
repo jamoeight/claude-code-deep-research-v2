@@ -84,6 +84,7 @@ C = [f for f in F if f["tier"] == "C"]
 W = [f for f in F if f["tier"] == "W"]
 K = [f for f in F if f["tier"] == "calib"]
 HM = [f for f in F if f["tier"] == "H"]
+SM = [f for f in F if f["tier"] == "S"]
 HINTRO_PRIVATE = ("You asked for human-made things. Three new teams and a new elevation-model tell finder went after lost capitals, missing road stations and ruined desert towns. "
                   "Every lead here was looked at in Sentinel-2 and the DEM. This private page carries exact coordinates. The public repo shows them rounded to about 10 km, because several sites sit in regions where looting is active.")
 HINTRO_PUBLIC = ("Round 2 focused on human-made sites. Coordinates of possibly unrecorded archaeological sites are rounded to about 10 km here to avoid helping looters; "
@@ -96,6 +97,7 @@ out = (tpl.replace("{{A}}", "".join(card(f) for f in A))
           .replace("{{W}}", "".join(row(f) for f in W))
           .replace("{{K}}", "".join(row(f) for f in K))
           .replace("{{H}}", "".join(card(f, big=True) for f in HM))
+          .replace("{{S}}", "".join(card(f, big=(f["novelty"] != "KNOWN")) for f in SM))
           .replace("{{HINTRO}}", (HINTRO_PRIVATE if PRIVATE else HINTRO_PUBLIC))
           .replace("{{NA}}", str(len(A))).replace("{{NB}}", str(len(B))).replace("{{NC}}", str(len(C)))
           .replace("{{NW}}", str(len(W))).replace("{{NTOT}}", str(len(F))))
